@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg'
+
+import { FormattedMessage } from 'react-intl'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        placeItems: 'center',
+        placeContent: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <img
+        src={OverwatchLogo}
+        alt="Overwatch Logo"
+        style={{
+          height: '50vw',
+          width: '50vw',
+          maxHeight: '60vh',
+          maxWidth: '60vh',
+        }}
+      />
+      <h1 style={{ marginTop: 20, fontSize: 60 }}>-IN DEVELOPMENT-</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
