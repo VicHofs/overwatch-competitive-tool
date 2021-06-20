@@ -1,17 +1,11 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
-import { CustomTheme } from './themes/default';
+import { CustomTheme } from './themes/default'
 
-import { Industry, BigNoodle, Futura, Roboto } from './fonts';
+import { Industry } from './fonts'
 
 const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
   ${Industry}
-
-  ${BigNoodle}
-
-  ${Futura}
-
-  ${Roboto}
 
   * {
     margin: 0;
@@ -43,7 +37,7 @@ const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
     width: 100%;
     display: block;
 
-    background-color: ${({ theme }) => theme.colors.primarySoft};
+    background-color: ${({ theme }) => theme.colors.primary};
 
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -51,40 +45,7 @@ const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
     font-weight: 400;
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.contrast};
-
-    img {
-      user-drag: none;
-    }
-
-    select:hover + svg, select:focus + svg {
-      color: ${({ theme }) => theme.colors.accent};
-    }
-
-    select + svg {
-      transform: translateY(1px);
-    }
-
-    select {
-      background-color: ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.contrast};
-      font-family: Industry;
-      font-weight: 500;
-      text-transform: uppercase;
-      border: none;
-
-      &:hover, &:focus {
-        color: ${({ theme }) => theme.colors.accent};
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      option {
-        background-color: transparent;
-      }
-    }
   }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import DataWrapper from 'components/DataWrapper';
+import DataWrapper from 'components/DataWrapper'
 
-import App from './App';
+import App from './App'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,4 +12,4 @@ ReactDOM.render(
     </DataWrapper>
   </React.StrictMode>,
   document.getElementById('root'),
-);
+)
