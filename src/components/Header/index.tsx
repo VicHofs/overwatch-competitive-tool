@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Container, TitleContainer, ToolContainer } from './styles';
 import { Context } from 'components/DataWrapper';
 
@@ -7,7 +7,8 @@ import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
 
 const Header: React.FC = () => {
-  const { currTheme, selectLang, selectTheme } = useContext(Context);
+  const { currTheme, selectLang, selectTheme, locale } = useContext(Context);
+  useEffect(() => console.log(locale));
   return (
     <Container>
       <TitleContainer>
@@ -19,8 +20,12 @@ const Header: React.FC = () => {
       </TitleContainer>
       <ToolContainer>
         <select name="language" id="langSelect" onChange={(e) => selectLang(e)}>
-          <option value="en-US">English (US)</option>
-          <option value="pt-BR">Português (BR)</option>
+          <option value="en-US" selected={locale === 'en-US'}>
+            English (US)
+          </option>
+          <option value="pt-BR" selected={locale === 'pt-BR'}>
+            Português (BR)
+          </option>
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select name="theme" id="themeSelect" onChange={(e) => selectTheme(e)}>

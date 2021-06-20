@@ -9,7 +9,7 @@ const defaultTheme = {
     secondarySoft: '#405275',
 
     accent: '#f99e1a',
-    accentSoft: '#f9a730',
+    accentSoft: '#d17e05',
 
     contrast: '#000000',
     contrastSoft: '#4a4c4e',

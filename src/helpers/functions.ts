@@ -34,3 +34,8 @@ export const sortPlayers = (members: Array<Player>): Array<Player> => {
     .slice()
     .sort((a, b) => order.indexOf(a.role) - order.indexOf(b.role));
 };
+
+export const rankMask = (rank: string): string => {
+  if (rank === '0') return '';
+  return rank.replace(/\D/, '');
+};

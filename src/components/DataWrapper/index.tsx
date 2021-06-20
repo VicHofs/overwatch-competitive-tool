@@ -29,9 +29,9 @@ export const Context = React.createContext({
 const navLang = navigator.language;
 
 const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
-  const [locale, setLocale] = useState(navLang);
+  const [locale, setLocale] = useState(navLang === 'en' ? 'en-US' : navLang);
   const [lang, setLang] = useState(
-    navLang === 'en-US' ? AmericanEnglish : BrazilianPortuguese,
+    locale === 'en-US' ? AmericanEnglish : BrazilianPortuguese,
   );
 
   const [currTheme, setCurrTheme] = useState(defaultTheme);

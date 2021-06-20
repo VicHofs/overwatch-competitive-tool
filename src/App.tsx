@@ -2,11 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers } from 'mock';
-import { sortPlayers } from 'helpers/functions';
+import { rankMask, sortPlayers } from 'helpers/functions';
 import Header from 'components/Header';
 import { Context } from 'components/DataWrapper';
 import { FormattedMessage } from 'react-intl';
-import { Input, PlayerList, RoleIcon, SecondaryButton } from 'styles';
+import {
+  Input,
+  PlayerList,
+  PrimaryButton,
+  RoleIcon,
+  SecondaryButton,
+} from 'styles';
 
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
@@ -33,6 +39,12 @@ const roles = [
   },
 ];
 
+const alreadyIncludedIn = (player: Player, players: Player[]) => {
+  return players.some(
+    (item) => JSON.stringify(item) === JSON.stringify(player),
+  );
+};
+
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -43,14 +55,26 @@ const App: React.FC = () => {
     role: '',
   });
 
+  const [teams, setTeams] = useState<Array<Array<Player>>>([]);
+
   const handleAddPlayer = (player: Player) => {
-    if (!!player.rank && !!player.battleTag && !!player.role) {
+    if (
+      !!player.rank &&
+      !!player.battleTag &&
+      !!player.role &&
+      !alreadyIncludedIn(player, players)
+    ) {
       console.log('player ', player, ' added');
       setPlayers((prevState) => [...prevState, player]);
       setTimeout(
         () => animateScroll.scrollToBottom({ containerId: 'playerList' }),
         50,
       );
+      setNewPlayer({
+        rank: 0,
+        battleTag: '',
+        role: '',
+      });
     }
   };
 
@@ -82,12 +106,16 @@ const App: React.FC = () => {
           <Input
             type="text"
             placeholder="Rank"
+            value={rankMask(String(newPlayer.rank))}
             style={{ width: 50, marginRight: 10 }}
             maxLength={4}
             onChange={(e) =>
               setNewPlayer((prevState) => {
                 if (e.target.value)
-                  return { ...prevState, rank: Number(e.target.value) };
+                  return {
+                    ...prevState,
+                    rank: Number(rankMask(e.target.value)),
+                  };
                 return { ...prevState, rank: 0 };
               })
             }
@@ -96,6 +124,7 @@ const App: React.FC = () => {
           <Input
             type="text"
             placeholder="Battletag#00000"
+            value={newPlayer.battleTag}
             onChange={(e) =>
               setNewPlayer((prevState) => {
                 if (e.target.value)
@@ -124,6 +153,12 @@ const App: React.FC = () => {
           type="button"
           onClick={() => handleAddPlayer(newPlayer)}
           style={{ margin: '20px 0' }}
+          disabled={
+            !newPlayer.rank ||
+            !newPlayer.battleTag ||
+            !newPlayer.role ||
+            alreadyIncludedIn(newPlayer, players)
+          }
         >
           <FormattedMessage id="app.teamSorter.add" />
         </SecondaryButton>
@@ -135,6 +170,15 @@ const App: React.FC = () => {
             />
           ))}
         </PlayerList>
+        {players.length >= 2 && (
+          <PrimaryButton
+            style={{ marginTop: 20 }}
+            disabled={players.length < 2}
+            className="animate__animated animate__fadeIn animate__faster"
+          >
+            <FormattedMessage id="app.teamSorter.sort" />
+          </PrimaryButton>
+        )}
         {/* <TeamDisplay members={mockPlayers} /> */}
       </div>
     </>

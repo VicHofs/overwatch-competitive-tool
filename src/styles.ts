@@ -12,15 +12,38 @@ export const Input = styled.input`
     ${({ theme }) =>
       theme.title === 'dark'
         ? theme.colors.secondarySoft
-        : theme.colors.secondary};
+        : `${theme.colors.secondary}80`};
 
   &:focus {
-    border-bottom: 3px solid ${({ theme }) => theme.colors.accent};
+    border-bottom: 3px solid ${({ theme }) => theme.colors.secondary};
   }
 
   &.filled {
     border-bottom: 3px solid ${({ theme }) => theme.colors.accent};
   }
+`;
+
+export const PrimaryButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.accent};
+  font-family: Futura;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: white;
+  border: 2.5px solid ${({ theme }) => theme.colors.accent};
+  border-radius: 5px;
+  padding: 8px 20px;
+  transition: all 100ms ease;
+
+  &:hover {
+    ${({ disabled, theme }) =>
+      disabled
+        ? ''
+        : `border: 2.5px solid white;
+    background-color: ${theme.colors.accentSoft};
+    cursor: pointer;`}
+  }
+
+  ${({ disabled }) => (disabled ? 'opacity: 0.3; cursor: default' : '')}
 `;
 
 export const SecondaryButton = styled.button`
@@ -35,9 +58,15 @@ export const SecondaryButton = styled.button`
   transition: all 100ms ease;
 
   &:hover {
-    border: 2.5px solid white;
-    cursor: pointer;
+    ${({ disabled, theme }) =>
+      disabled
+        ? ''
+        : `border: 2.5px solid white;
+    background-color: ${theme.colors.secondarySoft};
+    cursor: pointer;`}
   }
+
+  ${({ disabled }) => (disabled ? 'opacity: 0.3; cursor: default' : '')}
 `;
 
 export const RoleIcon = styled.img`

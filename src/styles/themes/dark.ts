@@ -9,7 +9,7 @@ const darkTheme = {
     secondarySoft: '#405275',
 
     accent: '#f99e1a',
-    accentSoft: '#e08e17',
+    accentSoft: '#d17e05',
 
     contrast: '#ffffff',
     contrastSoft: '#f2f2f2',
