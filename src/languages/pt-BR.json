@@ -1,3 +1,9 @@
 {
-  "app.test": "isto é um teste"
+  "app.test": "isto é um teste",
+  "app.themes.darkTheme": "Tema Escuro",
+  "app.themes.lightTheme": "Tema Claro",
+  "app.teamSorter.title": "Sorteador de time balanceado",
+  "app.teamSorter.add": "Adicionar Jogador",
+  "app.teamSorter.sort": "Montar Times",
+  "app.teamSorter.team": "Time {number}"
 }

@@ -8,13 +8,13 @@ const defaultTheme = {
     secondary: '#218ffe',
     secondarySoft: '#405275',
 
-    accent: '#e4307f',
-    accentSoft: '#f9a730',
+    accent: '#f99e1a',
+    accentSoft: '#d17e05',
 
     contrast: '#000000',
-    contrastSoft: '#43484c',
+    contrastSoft: '#4a4c4e',
   },
-}
-export type CustomTheme = typeof defaultTheme
+};
+export type CustomTheme = typeof defaultTheme;
 
-export default defaultTheme
+export default defaultTheme;

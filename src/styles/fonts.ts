@@ -1,35 +1,35 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
-import IndustryLight from 'assets/fonts/Industry-Light.ttf'
-import IndustryLightItalic from 'assets/fonts/Industry-LightItalic.ttf'
-import IndustryBook from 'assets/fonts/Industry-Book.ttf'
-import IndustryBookItalic from 'assets/fonts/Industry-BookItalic.ttf'
-import IndustryMedium from 'assets/fonts/Industry-Medium.ttf'
-import IndustryMediumItalic from 'assets/fonts/Industry-MediumItalic.ttf'
-import IndustryDemi from 'assets/fonts/Industry-Demi.ttf'
-import IndustryDemiItalic from 'assets/fonts/Industry-DemiItalic.ttf'
-import IndustryBold from 'assets/fonts/Industry-Bold.ttf'
-import IndustryBoldItalic from 'assets/fonts/Industry-BoldItalic.ttf'
-import IndustryBlack from 'assets/fonts/Industry-Black.ttf'
-import IndustryBlackItalic from 'assets/fonts/Industry-BlackItalic.ttf'
+import IndustryLight from 'assets/fonts/Industry-Light.ttf';
+import IndustryLightItalic from 'assets/fonts/Industry-LightItalic.ttf';
+import IndustryBook from 'assets/fonts/Industry-Book.ttf';
+import IndustryBookItalic from 'assets/fonts/Industry-BookItalic.ttf';
+import IndustryMedium from 'assets/fonts/Industry-Medium.ttf';
+import IndustryMediumItalic from 'assets/fonts/Industry-MediumItalic.ttf';
+import IndustryDemi from 'assets/fonts/Industry-Demi.ttf';
+import IndustryDemiItalic from 'assets/fonts/Industry-DemiItalic.ttf';
+import IndustryBold from 'assets/fonts/Industry-Bold.ttf';
+import IndustryBoldItalic from 'assets/fonts/Industry-BoldItalic.ttf';
+import IndustryBlack from 'assets/fonts/Industry-Black.ttf';
+import IndustryBlackItalic from 'assets/fonts/Industry-BlackItalic.ttf';
 
-import RobotoThin from 'assets/fonts/Roboto-Thin.ttf'
-import RobotoThinItalic from 'assets/fonts/Roboto-ThinItalic.ttf'
-import RobotoLight from 'assets/fonts/Roboto-Light.ttf'
-import RobotoLightItalic from 'assets/fonts/Roboto-LightItalic.ttf'
-import RobotoRegular from 'assets/fonts/Roboto-Regular.ttf'
+import RobotoThin from 'assets/fonts/Roboto-Thin.ttf';
+import RobotoThinItalic from 'assets/fonts/Roboto-ThinItalic.ttf';
+import RobotoLight from 'assets/fonts/Roboto-Light.ttf';
+import RobotoLightItalic from 'assets/fonts/Roboto-LightItalic.ttf';
+import RobotoRegular from 'assets/fonts/Roboto-Regular.ttf';
 // import RobotoRegularItalic from 'assets/fonts/Roboto-RegularItalic.ttf';
-import RobotoMedium from 'assets/fonts/Roboto-Medium.ttf'
-import RobotoMediumItalic from 'assets/fonts/Roboto-MediumItalic.ttf'
-import RobotoBold from 'assets/fonts/Roboto-Bold.ttf'
-import RobotoBoldItalic from 'assets/fonts/Roboto-BoldItalic.ttf'
-import RobotoBlack from 'assets/fonts/Roboto-Black.ttf'
-import RobotoBlackItalic from 'assets/fonts/Roboto-BlackItalic.ttf'
+import RobotoMedium from 'assets/fonts/Roboto-Medium.ttf';
+import RobotoMediumItalic from 'assets/fonts/Roboto-MediumItalic.ttf';
+import RobotoBold from 'assets/fonts/Roboto-Bold.ttf';
+import RobotoBoldItalic from 'assets/fonts/Roboto-BoldItalic.ttf';
+import RobotoBlack from 'assets/fonts/Roboto-Black.ttf';
+import RobotoBlackItalic from 'assets/fonts/Roboto-BlackItalic.ttf';
 
-import FuturaSingle from 'assets/fonts/Futura.ttf'
+import FuturaSingle from 'assets/fonts/Futura.ttf';
 
-import BigNoodleRegular from 'assets/fonts/BigNoodle.ttf'
-import BigNoodleItalic from 'assets/fonts/BigNoodleItalic.ttf'
+import BigNoodleRegular from 'assets/fonts/BigNoodle.ttf';
+import BigNoodleItalic from 'assets/fonts/BigNoodleItalic.ttf';
 
 export const Industry = css`
   @font-face {
@@ -104,7 +104,7 @@ export const Industry = css`
     font-weight: 700;
     font-style: italic;
   }
-`
+`;
 
 export const Roboto = css`
   @font-face {
@@ -176,14 +176,14 @@ export const Roboto = css`
     font-weight: 700;
     font-style: italic;
   }
-`
+`;
 
 export const Futura = css`
   @font-face {
     font-family: 'Futura';
     src: url(${FuturaSingle});
   }
-`
+`;
 
 export const BigNoodle = css`
   @font-face {
@@ -194,4 +194,4 @@ export const BigNoodle = css`
     font-family: 'BigNoodle';
     src: url(${BigNoodleItalic});
   }
-`
+`;
