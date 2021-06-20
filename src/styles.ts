@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TeamContainerProps {
+  teams?: number;
+}
+
 export const Input = styled.input`
   background-color: transparent;
   border: none;
@@ -105,12 +109,14 @@ export const PlayerList = styled.div`
   }
 `;
 
-export const TeamContainer = styled.div`
+export const TeamContainer = styled.div<TeamContainerProps>`
   display: flex;
   flex-wrap: wrap;
   place-content: center;
+  margin: 20px 0;
+  ${({ teams }) => (teams ? `max-width: ${Math.ceil(teams / 2) * 320}px;` : '')}
 
   & > div {
-    margin: 30px 10px;
+    margin: 10px 10px;
   }
 `;

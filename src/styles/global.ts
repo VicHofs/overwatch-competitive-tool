@@ -13,6 +13,11 @@ const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
 
   ${Roboto}
 
+  :root {
+    --animate-delay: 0.5s;
+    --animate-duration: 0.5s;
+  }
+
   * {
     margin: 0;
     padding: 0;

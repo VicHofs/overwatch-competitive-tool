@@ -48,7 +48,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
-  const [players, setPlayers] = useState<Player[]>(mockPlayers);
+  const [players, setPlayers] = useState<Player[]>([]);
 
   const intl = useIntl();
 
@@ -89,7 +89,7 @@ const App: React.FC = () => {
           flexDirection: 'column',
           placeItems: 'center',
           // placeContent: 'center',
-          minHeight: 'calc(100vh - 80px)',
+          minHeight: 'calc(100vh - 105px)',
         }}
       >
         <h1 style={{ textTransform: 'uppercase', marginBottom: 40 }}>
@@ -168,7 +168,7 @@ const App: React.FC = () => {
           {players.map((player) => (
             <PlayerDisplay
               {...player}
-              className="animate__animated animate__fadeInUp animate__faster"
+              className="animate__animated animate__fadeInUp animate__fast"
             />
           ))}
         </PlayerList>
@@ -177,16 +177,19 @@ const App: React.FC = () => {
             type="button"
             onClick={() => {
               setTeams(sortTeams(players));
-              animateScroll.scrollToBottom();
+              animateScroll.scrollToBottom({
+                smooth: 'easeOutCubic',
+                duration: 3000,
+              });
             }}
             style={{ marginTop: 20 }}
             disabled={players.length < 2}
-            className="animate__animated animate__fadeIn animate__faster"
+            className="animate__animated animate__fadeIn animate__fast"
           >
             <FormattedMessage id="app.teamSorter.sort" />
           </PrimaryButton>
         )}
-        <TeamContainer>
+        <TeamContainer teams={teams.length}>
           {!!teams &&
             teams.map((team) => (
               <TeamDisplay

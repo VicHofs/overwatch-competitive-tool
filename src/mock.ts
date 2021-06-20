@@ -7,7 +7,7 @@ export const players = [
   {
     battleTag: 'VicHofs#1301',
     role: 'damage',
-    rank: 3400,
+    rank: 3352,
   },
   {
     battleTag: 'Pontinho#11712',
