@@ -78,8 +78,6 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
     .filter((player) => player.role === 'support')
     .sort((a, b) => b.rank - a.rank);
 
-  console.log(tankPool, damagePool, supportPool);
-
   let currTank = 0;
   let currDamage = 0;
   let currSupport = 0;
@@ -131,6 +129,6 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
     teams[priority].totalSR += supportPool[currSupport].rank;
     currSupport++;
   }
-  console.log(teams);
+
   return teams;
 };

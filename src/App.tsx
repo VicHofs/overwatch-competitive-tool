@@ -67,7 +67,6 @@ const App: React.FC = () => {
       !!player.role &&
       !alreadyIncludedIn(player, players)
     ) {
-      console.log('player ', player, ' added');
       setPlayers((prevState) => [...prevState, player]);
       setTimeout(
         () => animateScroll.scrollToBottom({ containerId: 'playerList' }),
