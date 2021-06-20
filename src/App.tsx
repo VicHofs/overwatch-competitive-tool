@@ -48,7 +48,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
-  const [players, setPlayers] = useState<Player[]>(mockPlayers);
+  const [players, setPlayers] = useState<Player[]>([]);
 
   const intl = useIntl();
 
