@@ -2,16 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers } from 'mock';
-import { rankMask, sortPlayers } from 'helpers/functions';
+import { rankMask, sortPlayers, sortTeams, TeamInfo } from 'helpers/functions';
 import Header from 'components/Header';
 import { Context } from 'components/DataWrapper';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import {
   Input,
   PlayerList,
   PrimaryButton,
   RoleIcon,
   SecondaryButton,
+  TeamContainer,
 } from 'styles';
 
 import tankIcon from 'assets/images/icons/tank.svg';
@@ -47,7 +48,9 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>(mockPlayers);
+
+  const intl = useIntl();
 
   const [newPlayer, setNewPlayer] = useState<Player>({
     rank: 0,
@@ -55,7 +58,7 @@ const App: React.FC = () => {
     role: '',
   });
 
-  const [teams, setTeams] = useState<Array<Array<Player>>>([]);
+  const [teams, setTeams] = useState<TeamInfo[]>([]);
 
   const handleAddPlayer = (player: Player) => {
     if (
@@ -172,6 +175,11 @@ const App: React.FC = () => {
         </PlayerList>
         {players.length >= 2 && (
           <PrimaryButton
+            type="button"
+            onClick={() => {
+              setTeams(sortTeams(players));
+              animateScroll.scrollToBottom();
+            }}
             style={{ marginTop: 20 }}
             disabled={players.length < 2}
             className="animate__animated animate__fadeIn animate__faster"
@@ -179,7 +187,20 @@ const App: React.FC = () => {
             <FormattedMessage id="app.teamSorter.sort" />
           </PrimaryButton>
         )}
-        {/* <TeamDisplay members={mockPlayers} /> */}
+        <TeamContainer>
+          {!!teams &&
+            teams.map((team) => (
+              <TeamDisplay
+                members={team.members}
+                color={team.color}
+                name={`Team ${team.id}`}
+                number={team.id}
+                className={`animate__animated animate__zoomIn animate__faster animate__delay-${
+                  team.id - 1
+                }s`}
+              />
+            ))}
+        </TeamContainer>
       </div>
     </>
   );

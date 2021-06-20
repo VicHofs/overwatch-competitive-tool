@@ -8,15 +8,23 @@ import { Container, Heading } from './styles';
 interface TeamDisplayProps {
   members: Array<Player>;
   name?: string;
+  number?: number;
   color?: string;
+  className?: string;
 }
 
-const TeamDisplay: React.FC<TeamDisplayProps> = ({ name, color, members }) => {
+const TeamDisplay: React.FC<TeamDisplayProps> = ({
+  name,
+  color,
+  members,
+  number,
+  className,
+}) => {
   const averageRank = Math.round(
     members.reduce((accum, player) => accum + player.rank, 0) / 6,
   );
   return (
-    <Container>
+    <Container className={className}>
       <Heading color={color}>
         <h3
           style={{
@@ -26,7 +34,10 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({ name, color, members }) => {
             textTransform: 'uppercase',
           }}
         >
-          <FormattedMessage id="app.teamSorter.team" values={{ number: 1 }} />
+          <FormattedMessage
+            id="app.teamSorter.team"
+            values={{ number: number ?? 1 }}
+          />
         </h3>
         <span>
           <img src={rankIcon(averageRank)} alt={rankName(averageRank)} />

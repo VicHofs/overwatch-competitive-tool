@@ -29,6 +29,36 @@ export const players = [
     role: 'support',
     rank: 2164,
   },
+  {
+    battleTag: 'DELUCCA#1540',
+    role: 'tank',
+    rank: 2920,
+  },
+  {
+    battleTag: '绝望的#1695',
+    role: 'damage',
+    rank: 4174,
+  },
+  {
+    battleTag: 'TheKingPp#1121',
+    role: 'damage',
+    rank: 2708,
+  },
+  {
+    battleTag: 'Myst#11427',
+    role: 'tank',
+    rank: 3023,
+  },
+  {
+    battleTag: 'Basso#11205',
+    role: 'support',
+    rank: 2066,
+  },
+  {
+    battleTag: 'StationR #1787',
+    role: 'support',
+    rank: 2668,
+  },
 ];
 
 // export const players = [

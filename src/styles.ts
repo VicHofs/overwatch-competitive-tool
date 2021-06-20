@@ -104,3 +104,12 @@ export const PlayerList = styled.div`
     margin-top: 5px;
   }
 `;
+
+export const TeamContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  & > div {
+    margin: 30px 10px;
+  }
+`;

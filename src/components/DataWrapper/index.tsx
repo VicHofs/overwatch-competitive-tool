@@ -22,7 +22,7 @@ export const Context = React.createContext({
   currTheme: defaultTheme,
   selectTheme: (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) =>
     console.error(
-      'Error handling setCurrTheme event: no function passed to DataWrapper Context',
+      'Error handling selectLang event: no function passed to DataWrapper Context',
     ),
 });
 
@@ -34,7 +34,12 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
     locale === 'en-US' ? AmericanEnglish : BrazilianPortuguese,
   );
 
-  const [currTheme, setCurrTheme] = useState(defaultTheme);
+  const [currTheme, setCurrTheme] = useState(
+    window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? darkTheme
+      : defaultTheme,
+  );
 
   const selectLang = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const newLocale = e.target.value;

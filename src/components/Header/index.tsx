@@ -5,10 +5,13 @@ import { Context } from 'components/DataWrapper';
 import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg';
 import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const Header: React.FC = () => {
+  const intl = useIntl();
+
   const { currTheme, selectLang, selectTheme, locale } = useContext(Context);
-  useEffect(() => console.log(locale));
+
   return (
     <Container>
       <TitleContainer>
@@ -29,8 +32,18 @@ const Header: React.FC = () => {
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select name="theme" id="themeSelect" onChange={(e) => selectTheme(e)}>
-          <option value="light">Light theme</option>
-          <option value="dark">Dark theme</option>
+          <option value="light" selected={currTheme.title === 'light'}>
+            {intl.formatMessage({
+              id: 'app.themes.lightTheme',
+              defaultMessage: 'Light Theme',
+            })}
+          </option>
+          <option value="dark" selected={currTheme.title === 'dark'}>
+            {intl.formatMessage({
+              id: 'app.themes.darkTheme',
+              defaultMessage: 'Dark Theme',
+            })}
+          </option>
         </select>
       </ToolContainer>
     </Container>
