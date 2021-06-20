@@ -131,6 +131,6 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
     teams[priority].totalSR += supportPool[currSupport].rank;
     currSupport++;
   }
-
+  console.log(teams);
   return teams;
 };

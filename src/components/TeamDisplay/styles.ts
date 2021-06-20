@@ -17,7 +17,7 @@ export const Container = styled.div`
     height: 80px;
 
     img {
-      height: 60%;
+      height: 50%;
     }
   }
 
@@ -42,6 +42,7 @@ export const Heading = styled.span<HeadingProps>`
   padding: 0 20px;
 
   background-color: ${({ color }) => color ?? 'none'};
+  color: white;
 
   img {
     height: 80%;

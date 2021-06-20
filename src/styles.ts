@@ -108,6 +108,7 @@ export const PlayerList = styled.div`
 export const TeamContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  place-content: center;
 
   & > div {
     margin: 30px 10px;
