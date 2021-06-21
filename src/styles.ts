@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TeamContainerProps {
+  teams?: number;
+}
+
 export const Input = styled.input`
   background-color: transparent;
   border: none;
@@ -20,6 +24,34 @@ export const Input = styled.input`
 
   &.filled {
     border-bottom: 3px solid ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+export const InputContainer = styled.span`
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  place-items: center;
+  margin-bottom: 5;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    input + input {
+      width: 165px;
+    }
+
+    span {
+      margin-top: 10px;
+    }
   }
 `;
 
@@ -105,12 +137,36 @@ export const PlayerList = styled.div`
   }
 `;
 
-export const TeamContainer = styled.div`
+export const TeamContainer = styled.div<TeamContainerProps>`
   display: flex;
   flex-wrap: wrap;
   place-content: center;
+  margin: 20px 0;
+  ${({ teams }) => (teams ? `max-width: ${Math.ceil(teams / 2) * 320}px;` : '')}
 
   & > div {
-    margin: 30px 10px;
+    margin: 10px 10px;
+  }
+`;
+
+export const BenchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  margin-bottom: 20px;
+
+  h3 {
+    color: ${({ theme }) => theme.colors.contrastSoft};
+    font-family: Futura;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+
+  div + div {
+    margin-top: 5px;
   }
 `;

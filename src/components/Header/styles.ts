@@ -16,6 +16,23 @@ export const Container = styled.div`
   vertical-align: middle;
   user-select: none;
   margin-bottom: 25px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    padding: 10px 0;
+    select {
+      display: none;
+    }
+    svg {
+      display: none;
+    }
+  }
+
+  @media (max-width: 360px) {
+    h1 {
+      display: none;
+    }
+  }
 `;
 
 export const TitleContainer = styled.span`
