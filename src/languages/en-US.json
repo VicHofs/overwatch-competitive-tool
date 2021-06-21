@@ -2,7 +2,7 @@
   "app.test": "this is a test",
   "app.themes.darkTheme": "Dark Theme",
   "app.themes.lightTheme": "Light Theme",
-  "app.teamSorter.title": "Balanced Team Sorter",
+  "app.teamSorter.title": "Team Sorter",
   "app.teamSorter.add": "Add Player",
   "app.teamSorter.sort": "Sort Teams",
   "app.teamSorter.team": "Team {number}",

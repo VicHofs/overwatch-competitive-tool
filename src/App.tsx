@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
-import { players as mockPlayers } from 'mock';
-import { rankMask, sortTeams, TeamInfo } from 'helpers/functions';
+import { players as mockPlayers, randomizePlayers } from 'mock';
+import { altSortTeams, rankMask, sortTeams, TeamInfo } from 'helpers/functions';
 import Header from 'components/Header';
 import { Context } from 'components/DataWrapper';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -50,7 +50,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
-  const [players, setPlayers] = useState<Player[]>(mockPlayers);
+  const [players, setPlayers] = useState<Player[]>([]);
 
   const intl = useIntl();
 
@@ -104,6 +104,12 @@ const App: React.FC = () => {
         >
           <FormattedMessage id="app.teamSorter.title" />
         </h1>
+        {/* <button
+          type="button"
+          onClick={() => setPlayers(randomizePlayers(mockPlayers))}
+        >
+          randomize players
+        </button> */}
         <InputContainer>
           <Input
             type="text"
