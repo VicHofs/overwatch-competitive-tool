@@ -14,6 +14,11 @@ export interface TeamInfo {
   totalSR: number;
 }
 
+export interface SortResult {
+  teams: TeamInfo[];
+  bench?: Player[];
+}
+
 export const rankIcon = (rank: number): string => {
   if (rank < 1500) return bronzeIcon;
   if (rank < 2000) return silverIcon;
@@ -47,10 +52,24 @@ export const rankMask = (rank: string): string => {
   return rank.replace(/\D/, '');
 };
 
-export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
-  const groups = Math.floor(players.length / 6);
-  const playersToAdd = players.length - (players.length % 6);
+export const sortTeams = (players: Array<Player>): SortResult => {
+  const tankPool = players
+    .filter((player) => player.role === 'tank')
+    .sort((a, b) => b.rank - a.rank);
+  const damagePool = players
+    .filter((player) => player.role === 'damage')
+    .sort((a, b) => b.rank - a.rank);
+  const supportPool = players
+    .filter((player) => player.role === 'support')
+    .sort((a, b) => b.rank - a.rank);
+
+  const groups = Math.floor(
+    Math.min(tankPool.length, damagePool.length, supportPool.length) / 2,
+  );
+  const playersToAdd = groups * 6;
   const teams: Array<TeamInfo> = [];
+  const bench: Array<Player> = [];
+
   let colors = [
     '#C4C4C4',
     '#174B97',
@@ -67,16 +86,6 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
     '#09226B',
     '#990034',
   ];
-
-  const tankPool = players
-    .filter((player) => player.role === 'tank')
-    .sort((a, b) => b.rank - a.rank);
-  const damagePool = players
-    .filter((player) => player.role === 'damage')
-    .sort((a, b) => b.rank - a.rank);
-  const supportPool = players
-    .filter((player) => player.role === 'support')
-    .sort((a, b) => b.rank - a.rank);
 
   let currTank = 0;
   let currDamage = 0;
@@ -113,7 +122,6 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
       .filter((team) => team.members.length < 4)
       .reduce((a, b) => (a.totalSR < b.totalSR ? a : b));
     const priority = teams.findIndex((team) => team.id === priorityTeam.id);
-    if (currTank === tankPool.length) return teams;
     teams[priority].members.push(tankPool[currTank]);
     teams[priority].totalSR += tankPool[currTank].rank;
     currTank++;
@@ -124,11 +132,25 @@ export const sortTeams = (players: Array<Player>): Array<TeamInfo> => {
       .filter((team) => team.members.length < 6)
       .reduce((a, b) => (a.totalSR < b.totalSR ? a : b));
     const priority = teams.findIndex((team) => team.id === priorityTeam.id);
-    if (currSupport === supportPool.length) return teams;
     teams[priority].members.push(supportPool[currSupport]);
     teams[priority].totalSR += supportPool[currSupport].rank;
     currSupport++;
   }
 
-  return teams;
+  while (currDamage < damagePool.length) {
+    bench.push(damagePool[currDamage]);
+    currDamage++;
+  }
+
+  while (currTank < tankPool.length) {
+    bench.push(tankPool[currTank]);
+    currTank++;
+  }
+
+  while (currSupport < supportPool.length) {
+    bench.push(supportPool[currSupport]);
+    currSupport++;
+  }
+
+  return { teams, bench };
 };

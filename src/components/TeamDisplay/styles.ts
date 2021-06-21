@@ -4,10 +4,16 @@ interface HeadingProps {
   color?: string;
 }
 
-export const Container = styled.div`
+interface StyleProps {
+  animationDelay?: string;
+}
+
+export const Container = styled.div<StyleProps>`
   font-family: BigNoodle;
   font-style: italic;
   font-size: 35px;
+  ${({ animationDelay }) =>
+    animationDelay ? `animation-delay: ${animationDelay};` : ''}
 
   span {
     display: flex;

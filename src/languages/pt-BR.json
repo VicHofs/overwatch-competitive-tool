@@ -5,5 +5,6 @@
   "app.teamSorter.title": "Sorteador de time balanceado",
   "app.teamSorter.add": "Adicionar Jogador",
   "app.teamSorter.sort": "Montar Times",
-  "app.teamSorter.team": "Time {number}"
+  "app.teamSorter.team": "Time {number}",
+  "app.teamSorter.bench": "Banco"
 }

@@ -27,6 +27,34 @@ export const Input = styled.input`
   }
 `;
 
+export const InputContainer = styled.span`
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  place-items: center;
+  margin-bottom: 5;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    input + input {
+      width: 165px;
+    }
+
+    span {
+      margin-top: 10px;
+    }
+  }
+`;
+
 export const PrimaryButton = styled.button`
   background-color: ${({ theme }) => theme.colors.accent};
   font-family: Futura;
@@ -118,5 +146,27 @@ export const TeamContainer = styled.div<TeamContainerProps>`
 
   & > div {
     margin: 10px 10px;
+  }
+`;
+
+export const BenchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  margin-bottom: 20px;
+
+  h3 {
+    color: ${({ theme }) => theme.colors.contrastSoft};
+    font-family: Futura;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+
+  div + div {
+    margin-top: 5px;
   }
 `;

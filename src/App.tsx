@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers } from 'mock';
-import { rankMask, sortPlayers, sortTeams, TeamInfo } from 'helpers/functions';
+import { rankMask, sortTeams, TeamInfo } from 'helpers/functions';
 import Header from 'components/Header';
 import { Context } from 'components/DataWrapper';
 import { FormattedMessage, useIntl } from 'react-intl';
 import {
+  BenchContainer,
   Input,
+  InputContainer,
   PlayerList,
   PrimaryButton,
   RoleIcon,
@@ -21,7 +23,7 @@ import supportIcon from 'assets/images/icons/support.svg';
 import { Player } from 'helpers/formats';
 import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
-import { animateScroll } from 'react-scroll';
+import { animateScroll, scroller } from 'react-scroll';
 
 import 'animate.css';
 
@@ -48,7 +50,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 
 const App: React.FC = () => {
   const { currTheme } = useContext(Context);
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>(mockPlayers);
 
   const intl = useIntl();
 
@@ -59,6 +61,7 @@ const App: React.FC = () => {
   });
 
   const [teams, setTeams] = useState<TeamInfo[]>([]);
+  const [bench, setBench] = useState<Player[]>([]);
 
   const handleAddPlayer = (player: Player) => {
     if (
@@ -92,19 +95,16 @@ const App: React.FC = () => {
           minHeight: 'calc(100vh - 105px)',
         }}
       >
-        <h1 style={{ textTransform: 'uppercase', marginBottom: 40 }}>
-          <FormattedMessage id="app.teamSorter.title" />
-        </h1>
-        <span
+        <h1
           style={{
-            height: 20,
-            display: 'flex',
-            flexDirection: 'row',
-            placeContent: 'center',
-            placeItems: 'center',
-            marginBottom: 5,
+            textTransform: 'uppercase',
+            marginBottom: 40,
+            textAlign: 'center',
           }}
         >
+          <FormattedMessage id="app.teamSorter.title" />
+        </h1>
+        <InputContainer>
           <Input
             type="text"
             placeholder="Rank"
@@ -136,21 +136,23 @@ const App: React.FC = () => {
             }
             className={newPlayer.battleTag ? 'filled' : ''}
           />
-          {roles.map((item) => (
-            <RoleIcon
-              src={item.icon}
-              alt={`select ${item.name}`}
-              onClick={() =>
-                setNewPlayer((prevState) => {
-                  if (prevState.role !== item.name)
-                    return { ...prevState, role: item.name };
-                  return { ...prevState, role: '' };
-                })
-              }
-              className={newPlayer.role === item.name ? 'selected' : ''}
-            />
-          ))}
-        </span>
+          <span>
+            {roles.map((item) => (
+              <RoleIcon
+                src={item.icon}
+                alt={`select ${item.name}`}
+                onClick={() =>
+                  setNewPlayer((prevState) => {
+                    if (prevState.role !== item.name)
+                      return { ...prevState, role: item.name };
+                    return { ...prevState, role: '' };
+                  })
+                }
+                className={newPlayer.role === item.name ? 'selected' : ''}
+              />
+            ))}
+          </span>
+        </InputContainer>
         <SecondaryButton
           type="button"
           onClick={() => handleAddPlayer(newPlayer)}
@@ -176,8 +178,11 @@ const App: React.FC = () => {
           <PrimaryButton
             type="button"
             onClick={() => {
-              setTeams(sortTeams(players));
-              animateScroll.scrollToBottom({
+              const { teams: fullTeams, bench: benchedPlayers } =
+                sortTeams(players);
+              setTeams(fullTeams);
+              if (benchedPlayers) setBench(benchedPlayers);
+              scroller.scrollTo('team-container', {
                 smooth: 'easeOutCubic',
                 duration: 3000,
               });
@@ -189,20 +194,41 @@ const App: React.FC = () => {
             <FormattedMessage id="app.teamSorter.sort" />
           </PrimaryButton>
         )}
-        <TeamContainer teams={teams.length}>
-          {!!teams &&
+        <TeamContainer teams={teams.length} id="team-container">
+          {!!teams.length &&
             teams.map((team) => (
               <TeamDisplay
                 members={team.members}
                 color={team.color}
                 name={`Team ${team.id}`}
                 number={team.id}
-                className={`animate__animated animate__zoomIn animate__faster animate__delay-${
-                  team.id - 1
-                }s`}
+                className="animate__animated animate__zoomIn animate__faster"
+                animationDelay={`${0.5 * (team.id - 1)}s`}
               />
             ))}
         </TeamContainer>
+        {!!bench.length && (
+          <BenchContainer>
+            <h3
+              className="animate__animated animate__fadeIn animate__faster"
+              style={{ animationDelay: `${0.5 * teams.length}s` }}
+            >
+              <FormattedMessage
+                id="app.teamSorter.bench"
+                defaultMessage="Bench"
+              />
+            </h3>
+            {bench.map((player, index) => (
+              <PlayerDisplay
+                className={`animate__animated animate__${
+                  index % 2 ? 'fadeInRight' : 'fadeInLeft'
+                } animate__faster`}
+                {...player}
+                animationDelay={`${0.5 * teams.length + 0.3 * (index + 1)}s`}
+              />
+            ))}
+          </BenchContainer>
+        )}
       </div>
     </>
   );

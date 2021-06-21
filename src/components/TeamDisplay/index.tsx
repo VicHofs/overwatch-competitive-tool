@@ -11,6 +11,7 @@ interface TeamDisplayProps {
   number?: number;
   color?: string;
   className?: string;
+  animationDelay?: string;
 }
 
 const TeamDisplay: React.FC<TeamDisplayProps> = ({
@@ -19,12 +20,13 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
   members,
   number,
   className,
+  animationDelay,
 }) => {
   const averageRank = Math.round(
     members.reduce((accum, player) => accum + player.rank, 0) / 6,
   );
   return (
-    <Container className={className}>
+    <Container className={className} animationDelay={animationDelay}>
       <Heading color={color}>
         <h3
           style={{

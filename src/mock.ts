@@ -119,7 +119,6 @@ export const players = [
     role: 'support',
     rank: 2600,
   },
-
   {
     battleTag: 'Boneflether#1824',
     role: 'damage',
@@ -150,7 +149,6 @@ export const players = [
     role: 'support',
     rank: 2786,
   },
-
   {
     battleTag: 'Portuga#11206',
     role: 'damage',

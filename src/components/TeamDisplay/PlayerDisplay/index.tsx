@@ -7,6 +7,7 @@ import { Container } from './styles';
 interface PlayerDisplayProps extends Player {
   color?: string;
   className?: string;
+  animationDelay?: string;
 }
 
 const PlayerDisplay: React.FC<PlayerDisplayProps> = ({
@@ -15,10 +16,14 @@ const PlayerDisplay: React.FC<PlayerDisplayProps> = ({
   rank,
   color,
   className,
+  animationDelay,
 }) => {
   return (
     <Container
-      style={{ borderLeft: `10px solid ${color}` }}
+      style={{
+        borderLeft: `10px solid ${color}`,
+        animationDelay,
+      }}
       className={className}
     >
       <span>
