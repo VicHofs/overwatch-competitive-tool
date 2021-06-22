@@ -3,6 +3,7 @@
   "app.themes.darkTheme": "Dark Theme",
   "app.themes.lightTheme": "Light Theme",
   "app.teamSorter.title": "Team Sorter",
+  "app.teamSorter.greeting": "Add some players to get started!",
   "app.teamSorter.add": "Add Player",
   "app.teamSorter.sort": "Sort Teams",
   "app.teamSorter.team": "Team {number}",

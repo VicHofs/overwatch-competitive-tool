@@ -63,6 +63,34 @@ export const InputContainer = styled.span`
   }
 `;
 
+export const EmptyZone = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  place-content: center;
+  place-items: center;
+
+  * {
+    user-select: none;
+  }
+
+  img {
+    user-drag: none;
+    height: 200px;
+    max-height: 60vw;
+    margin-bottom: 40px;
+    opacity: 0.1;
+    ${({ theme }) => (theme.title === 'dark' ? 'filter: invert();' : '')}
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: min(10vw, 30px);
+    text-align: center;
+    color: ${({ theme }) => theme.colors.contrast}20;
+  }
+`;
+
 export const PrimaryButton = styled.button`
   background-color: ${({ theme }) => theme.colors.accent};
   font-family: Futura;

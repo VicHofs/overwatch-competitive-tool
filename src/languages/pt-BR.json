@@ -3,6 +3,7 @@
   "app.themes.darkTheme": "Tema Escuro",
   "app.themes.lightTheme": "Tema Claro",
   "app.teamSorter.title": "Montador de times",
+  "app.teamSorter.greeting": "Adicione jogadores para começar!",
   "app.teamSorter.add": "Adicionar Jogador",
   "app.teamSorter.sort": "Montar Times",
   "app.teamSorter.team": "Time {number}",
