@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers, randomizePlayers } from 'mock';
 import { altSortTeams, rankMask, sortTeams, TeamInfo } from 'helpers/functions';
 import Header from 'components/Header';
-import { FormattedMessage } from 'react-intl';
+import { Context } from 'components/DataWrapper';
+import { FormattedMessage, useIntl } from 'react-intl';
 import {
   BenchContainer,
   Input,
@@ -47,7 +48,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
   );
 };
 
-const App: React.FC = () => {
+const TeamSorter: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
 
   const [newPlayer, setNewPlayer] = useState<Player>({
@@ -111,7 +112,7 @@ const App: React.FC = () => {
             type="text"
             placeholder="Rank"
             value={rankMask(String(newPlayer.rank))}
-            style={{ width: 50 }}
+            style={{ width: 50, marginRight: 10 }}
             maxLength={4}
             onChange={(e) =>
               setNewPlayer((prevState) => {
@@ -236,4 +237,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default TeamSorter;

@@ -35,6 +35,10 @@ export const InputContainer = styled.span`
   place-items: center;
   margin-bottom: 5;
 
+  input:first-child {
+    margin-right: 10px;
+  }
+
   span {
     display: flex;
     flex-direction: row;
@@ -44,6 +48,10 @@ export const InputContainer = styled.span`
   @media (max-width: 375px) {
     flex-direction: column;
     margin-bottom: 30px;
+
+    input:first-child {
+      margin-right: 0;
+    }
 
     input + input {
       width: 165px;
