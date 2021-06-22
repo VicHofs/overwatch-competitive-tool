@@ -17,7 +17,7 @@ export const Container = styled.div`
   user-select: none;
   margin-bottom: 25px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 811px) {
     justify-content: center;
     padding: 10px 0;
     select {
