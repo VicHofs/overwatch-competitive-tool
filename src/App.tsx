@@ -7,6 +7,7 @@ import Header from 'components/Header';
 import { FormattedMessage } from 'react-intl';
 import {
   BenchContainer,
+  EmptyZone,
   Input,
   InputContainer,
   PlayerList,
@@ -23,6 +24,8 @@ import { Player } from 'helpers/formats';
 import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
 import { animateScroll, scroller } from 'react-scroll';
+
+import Sleep from 'assets/images/sleep.svg';
 
 import 'animate.css';
 
@@ -158,7 +161,7 @@ const App: React.FC = () => {
         <SecondaryButton
           type="button"
           onClick={() => handleAddPlayer(newPlayer)}
-          style={{ margin: '20px 0' }}
+          style={{ margin: '30px 0' }}
           disabled={
             !newPlayer.rank ||
             !newPlayer.battleTag ||
@@ -184,10 +187,14 @@ const App: React.FC = () => {
                 sortTeams(players);
               setTeams(fullTeams);
               if (benchedPlayers) setBench(benchedPlayers);
-              scroller.scrollTo('team-container', {
-                smooth: 'easeOutCubic',
-                duration: 3000,
-              });
+              setTimeout(
+                () =>
+                  scroller.scrollTo('team-container', {
+                    smooth: 'easeOutCubic',
+                    duration: 3000,
+                  }),
+                50,
+              );
             }}
             style={{ marginTop: 20 }}
             disabled={players.length < 2}
@@ -196,9 +203,20 @@ const App: React.FC = () => {
             <FormattedMessage id="app.teamSorter.sort" />
           </PrimaryButton>
         )}
-        <TeamContainer teams={teams.length} id="team-container">
-          {!!teams.length &&
-            teams.map((team) => (
+        {!players.length && (
+          <EmptyZone>
+            <img src={Sleep} alt="zzz" />
+            <h1>
+              <FormattedMessage
+                id="app.teamSorter.greeting"
+                defaultMessage="Add some players to get started!"
+              />
+            </h1>
+          </EmptyZone>
+        )}
+        {!!teams.length && (
+          <TeamContainer teams={teams.length} id="team-container">
+            {teams.map((team) => (
               <TeamDisplay
                 members={team.members}
                 color={team.color}
@@ -208,7 +226,8 @@ const App: React.FC = () => {
                 animationDelay={`${0.5 * (team.id - 1)}s`}
               />
             ))}
-        </TeamContainer>
+          </TeamContainer>
+        )}
         {!!bench.length && (
           <BenchContainer>
             <h3

@@ -23,7 +23,14 @@ const Header: React.FC = () => {
         <h1>Competitive Tool</h1>
       </TitleContainer>
       <ToolContainer>
-        <select name="language" id="langSelect" onChange={(e) => selectLang(e)}>
+        <select
+          name="language"
+          id="langSelect"
+          onChange={(e) => {
+            selectLang(e);
+            setCookie('prefers-language', e.target.value);
+          }}
+        >
           <option value="en-US" selected={locale === 'en-US'}>
             English (US)
           </option>

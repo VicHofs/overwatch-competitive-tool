@@ -48,6 +48,14 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
       setCurrTheme(
         cookies['prefers-theme'] === 'dark' ? darkTheme : defaultTheme,
       );
+    if (cookies['prefers-language']) {
+      setLocale(cookies['prefers-language']);
+      setLang(
+        cookies['prefers-language'] === 'en-US'
+          ? AmericanEnglish
+          : BrazilianPortuguese,
+      );
+    }
   });
 
   const selectLang = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
