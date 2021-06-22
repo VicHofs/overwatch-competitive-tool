@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
 import { IntlProvider } from 'react-intl';
 import BrazilianPortuguese from 'languages/pt-BR.json';
@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/global';
 import defaultTheme from 'styles/themes/default';
 import darkTheme from 'styles/themes/dark';
+import { getCookies } from 'helpers/cookies';
 
 interface DataWrapperProps {
   children?: ReactNode;
@@ -40,6 +41,14 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
       ? darkTheme
       : defaultTheme,
   );
+
+  useEffect(() => {
+    const cookies = getCookies();
+    if (cookies['prefers-theme'])
+      setCurrTheme(
+        cookies['prefers-theme'] === 'dark' ? darkTheme : defaultTheme,
+      );
+  });
 
   const selectLang = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const newLocale = e.target.value;

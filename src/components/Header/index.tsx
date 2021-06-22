@@ -6,6 +6,7 @@ import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg';
 import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { setCookie } from 'helpers/cookies';
 
 const Header: React.FC = () => {
   const intl = useIntl();
@@ -31,7 +32,14 @@ const Header: React.FC = () => {
           </option>
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
-        <select name="theme" id="themeSelect" onChange={(e) => selectTheme(e)}>
+        <select
+          name="theme"
+          id="themeSelect"
+          onChange={(e) => {
+            selectTheme(e);
+            setCookie('prefers-theme', e.target.value);
+          }}
+        >
           <option value="light" selected={currTheme.title === 'light'}>
             {intl.formatMessage({
               id: 'app.themes.lightTheme',
