@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/overwatch-competitive-tool/static/js/main.3cc8c31f.chunk.js",
-    "main.js.map": "/overwatch-competitive-tool/static/js/main.3cc8c31f.chunk.js.map",
+    "main.js": "/overwatch-competitive-tool/static/js/main.319a61fd.chunk.js",
+    "main.js.map": "/overwatch-competitive-tool/static/js/main.319a61fd.chunk.js.map",
     "runtime-main.js": "/overwatch-competitive-tool/static/js/runtime-main.383cd76d.js",
     "runtime-main.js.map": "/overwatch-competitive-tool/static/js/runtime-main.383cd76d.js.map",
     "static/css/2.a1596f27.chunk.css": "/overwatch-competitive-tool/static/css/2.a1596f27.chunk.css",
-    "static/js/2.f7b2af07.chunk.js": "/overwatch-competitive-tool/static/js/2.f7b2af07.chunk.js",
-    "static/js/2.f7b2af07.chunk.js.map": "/overwatch-competitive-tool/static/js/2.f7b2af07.chunk.js.map",
+    "static/js/2.92d1d771.chunk.js": "/overwatch-competitive-tool/static/js/2.92d1d771.chunk.js",
+    "static/js/2.92d1d771.chunk.js.map": "/overwatch-competitive-tool/static/js/2.92d1d771.chunk.js.map",
     "index.html": "/overwatch-competitive-tool/index.html",
     "static/css/2.a1596f27.chunk.css.map": "/overwatch-competitive-tool/static/css/2.a1596f27.chunk.css.map",
-    "static/js/2.f7b2af07.chunk.js.LICENSE.txt": "/overwatch-competitive-tool/static/js/2.f7b2af07.chunk.js.LICENSE.txt",
+    "static/js/2.92d1d771.chunk.js.LICENSE.txt": "/overwatch-competitive-tool/static/js/2.92d1d771.chunk.js.LICENSE.txt",
     "static/media/BigNoodle.e2ebffa4.ttf": "/overwatch-competitive-tool/static/media/BigNoodle.e2ebffa4.ttf",
     "static/media/BigNoodleItalic.a54ee5b6.ttf": "/overwatch-competitive-tool/static/media/BigNoodleItalic.a54ee5b6.ttf",
     "static/media/Futura.fa15297b.ttf": "/overwatch-competitive-tool/static/media/Futura.fa15297b.ttf",
@@ -41,13 +41,14 @@
     "static/media/damage.f1732c6c.svg": "/overwatch-competitive-tool/static/media/damage.f1732c6c.svg",
     "static/media/diamond.e1ae831d.png": "/overwatch-competitive-tool/static/media/diamond.e1ae831d.png",
     "static/media/grandmaster.39bfe7c8.png": "/overwatch-competitive-tool/static/media/grandmaster.39bfe7c8.png",
+    "static/media/sleep.eb1f518f.svg": "/overwatch-competitive-tool/static/media/sleep.eb1f518f.svg",
     "static/media/support.83e475f8.svg": "/overwatch-competitive-tool/static/media/support.83e475f8.svg",
     "static/media/tank.cb47a97c.svg": "/overwatch-competitive-tool/static/media/tank.cb47a97c.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.383cd76d.js",
     "static/css/2.a1596f27.chunk.css",
-    "static/js/2.f7b2af07.chunk.js",
-    "static/js/main.3cc8c31f.chunk.js"
+    "static/js/2.92d1d771.chunk.js",
+    "static/js/main.319a61fd.chunk.js"
   ]
 }
