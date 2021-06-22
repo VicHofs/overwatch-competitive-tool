@@ -180,7 +180,7 @@ const App: React.FC = () => {
             />
           ))}
         </PlayerList>
-        {players.length >= 2 && (
+        {players.length >= 12 && (
           <PrimaryButton
             type="button"
             onClick={() => {
