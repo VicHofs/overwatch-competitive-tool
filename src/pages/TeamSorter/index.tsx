@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers, randomizePlayers } from 'mock';
 import { altSortTeams, rankMask, sortTeams, TeamInfo } from 'helpers/functions';
 import Header from 'components/Header';
-import { Context } from 'components/DataWrapper';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import {
   BenchContainer,
+  EmptyZone,
   Input,
   InputContainer,
   PlayerList,
@@ -15,7 +15,7 @@ import {
   RoleIcon,
   SecondaryButton,
   TeamContainer,
-} from 'styles';
+} from './styles';
 
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
@@ -24,6 +24,8 @@ import { Player } from 'helpers/formats';
 import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
 import { animateScroll, scroller } from 'react-scroll';
+
+import Sleep from 'assets/images/sleep.svg';
 
 import 'animate.css';
 
@@ -48,7 +50,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
   );
 };
 
-const TeamSorter: React.FC = () => {
+const App: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
 
   const [newPlayer, setNewPlayer] = useState<Player>({
@@ -82,7 +84,6 @@ const TeamSorter: React.FC = () => {
 
   return (
     <>
-      <Header />
       <div
         style={{
           display: 'flex',
@@ -112,7 +113,7 @@ const TeamSorter: React.FC = () => {
             type="text"
             placeholder="Rank"
             value={rankMask(String(newPlayer.rank))}
-            style={{ width: 50, marginRight: 10 }}
+            style={{ width: 50 }}
             maxLength={4}
             onChange={(e) =>
               setNewPlayer((prevState) => {
@@ -159,7 +160,7 @@ const TeamSorter: React.FC = () => {
         <SecondaryButton
           type="button"
           onClick={() => handleAddPlayer(newPlayer)}
-          style={{ margin: '20px 0' }}
+          style={{ margin: '30px 0' }}
           disabled={
             !newPlayer.rank ||
             !newPlayer.battleTag ||
@@ -185,10 +186,14 @@ const TeamSorter: React.FC = () => {
                 sortTeams(players);
               setTeams(fullTeams);
               if (benchedPlayers) setBench(benchedPlayers);
-              scroller.scrollTo('team-container', {
-                smooth: 'easeOutCubic',
-                duration: 3000,
-              });
+              setTimeout(
+                () =>
+                  scroller.scrollTo('team-container', {
+                    smooth: 'easeOutCubic',
+                    duration: 3000,
+                  }),
+                50,
+              );
             }}
             style={{ marginTop: 20 }}
             disabled={players.length < 2}
@@ -197,9 +202,20 @@ const TeamSorter: React.FC = () => {
             <FormattedMessage id="app.teamSorter.sort" />
           </PrimaryButton>
         )}
-        <TeamContainer teams={teams.length} id="team-container">
-          {!!teams.length &&
-            teams.map((team) => (
+        {!players.length && (
+          <EmptyZone>
+            <img src={Sleep} alt="zzz" />
+            <h1>
+              <FormattedMessage
+                id="app.teamSorter.greeting"
+                defaultMessage="Add some players to get started!"
+              />
+            </h1>
+          </EmptyZone>
+        )}
+        {!!teams.length && (
+          <TeamContainer teams={teams.length} id="team-container">
+            {teams.map((team) => (
               <TeamDisplay
                 members={team.members}
                 color={team.color}
@@ -209,7 +225,8 @@ const TeamSorter: React.FC = () => {
                 animationDelay={`${0.5 * (team.id - 1)}s`}
               />
             ))}
-        </TeamContainer>
+          </TeamContainer>
+        )}
         {!!bench.length && (
           <BenchContainer>
             <h3
@@ -237,4 +254,4 @@ const TeamSorter: React.FC = () => {
   );
 };
 
-export default TeamSorter;
+export default App;

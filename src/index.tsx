@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 
 import DataWrapper from 'components/DataWrapper';
 
-import App from './App';
+import Routes from 'routes';
+import Header from 'components/Header';
 
 ReactDOM.render(
   <React.StrictMode>
     <DataWrapper>
-      <App />
+      <Header />
+      <Routes />
     </DataWrapper>
   </React.StrictMode>,
   document.getElementById('root'),

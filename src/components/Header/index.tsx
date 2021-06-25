@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Container, TitleContainer, ToolContainer } from './styles';
+import { Container, RouteLink, TitleContainer, ToolContainer } from './styles';
 import { Context } from 'components/DataWrapper';
 
 import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg';
@@ -7,11 +7,16 @@ import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { setCookie } from 'helpers/cookies';
+import { pages } from 'routes';
 
 const Header: React.FC = () => {
   const intl = useIntl();
 
   const { currTheme, selectLang, selectTheme, locale } = useContext(Context);
+
+  const handleLocation = (dest: string) => {
+    window.location.href = dest;
+  };
 
   return (
     <Container>
@@ -21,6 +26,18 @@ const Header: React.FC = () => {
           alt="Overwatch Logo"
         />
         <h1>Competitive Tool</h1>
+        {pages.map((page) => (
+          <RouteLink
+            type="button"
+            onClick={() => handleLocation(page.route)}
+            className={
+              window.location.href.includes(page.route) ? 'highlight' : ''
+            }
+            disabled={!!page.disabled}
+          >
+            <FormattedMessage id={page.slugId} defaultMessage={page.slug} />
+          </RouteLink>
+        ))}
       </TitleContainer>
       <ToolContainer>
         <select

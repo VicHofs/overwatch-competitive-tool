@@ -17,6 +17,12 @@ export const Container = styled.div`
   user-select: none;
   margin-bottom: 25px;
 
+  @media (max-width: 977px) {
+    button {
+      display: none;
+    }
+  }
+
   @media (max-width: 811px) {
     justify-content: center;
     padding: 10px 0;
@@ -35,6 +41,30 @@ export const Container = styled.div`
   }
 `;
 
+export const RouteLink = styled.button`
+  background-color: transparent;
+  border: none;
+  font-family: Industry;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.contrastSoft}98;
+  cursor: pointer;
+  padding: 30px 15px;
+
+  &.highlight {
+    color: ${({ theme }) => theme.colors.contrast};
+  }
+
+  &:hover {
+    color: ${({ disabled, theme }) =>
+      disabled ? `${theme.colors.contrastSoft}60` : theme.colors.accent};
+  }
+
+  ${({ disabled, theme }) =>
+    disabled ? `color: ${theme.colors.contrastSoft}60; cursor: default;` : ''}
+`;
+
 export const TitleContainer = styled.span`
   height: 100%;
   display: flex;
@@ -47,6 +77,10 @@ export const TitleContainer = styled.span`
   img {
     height: 90%;
     margin-right: 10px;
+  }
+
+  h1 + button {
+    margin-left: 40px;
   }
 `;
 
