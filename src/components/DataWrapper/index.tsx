@@ -11,7 +11,7 @@ import darkTheme from 'styles/themes/dark';
 import { getCookies } from 'helpers/cookies';
 
 interface DataWrapperProps {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 export const Context = React.createContext({

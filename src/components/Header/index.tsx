@@ -24,6 +24,8 @@ const Header: React.FC = () => {
       </TitleContainer>
       <ToolContainer>
         <select
+          tabIndex={2}
+          title={intl.formatMessage({ id: 'app.language' })}
           name="language"
           id="langSelect"
           onChange={(e) => {
@@ -40,6 +42,8 @@ const Header: React.FC = () => {
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select
+          tabIndex={1}
+          title={intl.formatMessage({ id: 'app.theme' })}
           name="theme"
           id="themeSelect"
           onChange={(e) => {

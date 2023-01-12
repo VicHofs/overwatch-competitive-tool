@@ -56,4 +56,12 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
   );
 };
 
+TeamDisplay.defaultProps = {
+  name: 'Unnamed Team',
+  number: 0,
+  color: '#b8b8b8',
+  className: '',
+  animationDelay: '',
+};
+
 export default TeamDisplay;

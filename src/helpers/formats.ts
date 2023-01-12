@@ -10,6 +10,7 @@
 //       };
 // }
 export interface Player {
+  id: string;
   battleTag: string;
   role: string;
   rank: number;
