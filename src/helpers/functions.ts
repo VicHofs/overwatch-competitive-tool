@@ -6,6 +6,8 @@ import diamondIcon from 'assets/images/icons/diamond.png';
 import masterIcon from 'assets/images/icons/master.png';
 import grandmasterIcon from 'assets/images/icons/grandmaster.png';
 import { Player } from './formats';
+import { randomBytes } from 'crypto';
+import { v5 as uuidv5 } from 'uuid';
 
 export interface TeamInfo {
   id: number;
@@ -48,6 +50,7 @@ export const sortPlayers = (members: Array<Player>): Array<Player> => {
 };
 
 export const rankMask = (rank: string): string => {
+  if (Number(rank[0]) > 4) return '';
   if (rank === '0') return '';
   return rank.replace(/\D/, '');
 };
@@ -319,4 +322,54 @@ const isIdealScenario = (players: Array<Player>): boolean => {
 export const smartSort = (players: Array<Player>): SortResult => {
   if (isIdealScenario(players)) return altSortTeams(players);
   return sortTeams(players);
+};
+
+const dict: Record<string, string[]> = {
+  battleTag: [
+    'btag',
+    'tag',
+    'battle tag',
+    'gamertag',
+    'gamer tag',
+    'player',
+    'user',
+    'name',
+  ],
+  role: ['position', 'main role', 'class'],
+  rank: ['sr', 'rating', 'skill rating', 'elo'],
+};
+
+export const keygen = () =>
+  uuidv5(randomBytes(16), `${process.env.REACT_APP_CRYPTO_NAMESPACE}`);
+
+const validKeys = Object.keys(dict);
+
+export const readCSV = async (csv: File, headers = true) => {
+  try {
+    const raw = await csv.text();
+    const [columns, ...rows] = raw.split('\n').map((row) => row.split(','));
+    columns.forEach(
+      (column, index) =>
+        validKeys.includes(column) ||
+        validKeys.some((key) => {
+          if (dict[key].includes(column)) {
+            columns[index] = key;
+            return true;
+          }
+          return false;
+        }),
+    );
+    return rows.map((row) =>
+      row.reduce(
+        (acc, value, index) => ({
+          ...acc,
+          [columns[index]]: value.match(/\D/) ? value : Number(value),
+        }),
+        {},
+      ),
+    );
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };

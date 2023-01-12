@@ -1,5 +1,9 @@
 {
   "app.test": "isto é um teste",
+  "app.language": "Idioma",
+  "app.theme": "Tema",
+  "app.teamSorter.or": "ou",
+  "app.teamSorter.readCsv": "importe um arquivo .csv",
   "app.themes.darkTheme": "Tema Escuro",
   "app.themes.lightTheme": "Tema Claro",
   "app.teamSorter.title": "Montador de times",

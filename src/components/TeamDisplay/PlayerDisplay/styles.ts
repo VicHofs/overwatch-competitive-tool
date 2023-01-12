@@ -1,6 +1,27 @@
 import styled from 'styled-components';
 
+export const Overlay = styled.span`
+  ${({ theme }) => (theme.title === 'light' ? 'filter: invert();' : '')}
+  display: flex;
+  place-content: center;
+  place-items: center;
+  transition: opacity 200ms ease-out;
+  z-index: 10;
+  position: absolute;
+  left: -10px;
+  top: 0;
+  height: 100%;
+  width: calc(100% + 10px);
+  background-color: #00000080;
+
+  svg {
+    opacity: 0.7;
+    ${({ theme }) => (theme.title === 'light' ? 'filter: invert();' : '')}
+  }
+`;
+
 export const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   place-items: center;
@@ -33,5 +54,15 @@ export const Container = styled.div`
   .roleIcon {
     height: 50%;
     ${({ theme }) => (theme.title === 'light' ? 'filter: invert()' : '')}
+  }
+
+  ${Overlay} {
+    opacity: 0;
+  }
+
+  &:hover {
+    ${Overlay} {
+      opacity: 1;
+    }
   }
 `;

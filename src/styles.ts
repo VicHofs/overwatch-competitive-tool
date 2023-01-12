@@ -83,58 +83,37 @@ export const EmptyZone = styled.div`
     ${({ theme }) => (theme.title === 'dark' ? 'filter: invert();' : '')}
   }
 
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
     font-weight: bold;
     font-size: min(10vw, 30px);
     text-align: center;
     color: ${({ theme }) => theme.colors.contrast}20;
   }
-`;
 
-export const PrimaryButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.accent};
-  font-family: Futura;
-  font-size: 25px;
-  text-transform: uppercase;
-  color: white;
-  border: 2.5px solid ${({ theme }) => theme.colors.accent};
-  border-radius: 5px;
-  padding: 8px 20px;
-  transition: all 100ms ease;
-
-  &:hover {
-    ${({ disabled, theme }) =>
-      disabled
-        ? ''
-        : `border: 2.5px solid white;
-    background-color: ${theme.colors.accentSoft};
-    cursor: pointer;`}
+  p {
+    font-weight: normal;
+    font-size: min(8vw, 20px);
   }
 
-  ${({ disabled }) => (disabled ? 'opacity: 0.3; cursor: default' : '')}
-`;
+  button {
+    font-family: 'Industry';
+    font-size: min(8vw, 20px);
+    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.contrast}20;
+    background-color: #00000000;
+    border: none;
+    transition: opacity 200ms ease-out;
 
-export const SecondaryButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  font-family: Futura;
-  font-size: 25px;
-  text-transform: uppercase;
-  color: white;
-  border: 2.5px solid ${({ theme }) => theme.colors.secondary};
-  border-radius: 5px;
-  padding: 8px 20px;
-  transition: all 100ms ease;
-
-  &:hover {
-    ${({ disabled, theme }) =>
-      disabled
-        ? ''
-        : `border: 2.5px solid white;
-    background-color: ${theme.colors.secondarySoft};
-    cursor: pointer;`}
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
   }
-
-  ${({ disabled }) => (disabled ? 'opacity: 0.3; cursor: default' : '')}
 `;
 
 export const RoleIcon = styled.img`
@@ -147,17 +126,24 @@ export const RoleIcon = styled.img`
 
   &:hover {
     opacity: 1;
+    filter: invert(46%) sepia(89%) saturate(2744%) hue-rotate(192deg)
+      brightness(101%) contrast(99%);
   }
 
   &:focus {
-    filter: invert(62%) sepia(71%) saturate(574%) hue-rotate(348deg)
-      brightness(99%) contrast(97%);
+    opacity: 1;
+    filter: invert(46%) sepia(89%) saturate(2744%) hue-rotate(192deg)
+      brightness(101%) contrast(99%);
   }
 
   &.selected {
     opacity: 1;
     filter: invert(62%) sepia(71%) saturate(574%) hue-rotate(348deg)
       brightness(99%) contrast(97%);
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 `;
 

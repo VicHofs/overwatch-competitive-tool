@@ -2,7 +2,13 @@ import React, { useContext, useState } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers, randomizePlayers } from 'mock';
-import { altSortTeams, rankMask, sortTeams, TeamInfo } from 'helpers/functions';
+import {
+  altSortTeams,
+  keygen,
+  rankMask,
+  sortTeams,
+  TeamInfo,
+} from 'helpers/functions';
 import Header from 'components/Header';
 import { Context } from 'components/DataWrapper';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -11,11 +17,11 @@ import {
   Input,
   InputContainer,
   PlayerList,
-  PrimaryButton,
   RoleIcon,
-  SecondaryButton,
   TeamContainer,
 } from 'styles';
+import { v5 as uuidv5 } from 'uuid';
+import { randomBytes } from 'crypto';
 
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
@@ -26,6 +32,7 @@ import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 import { animateScroll, scroller } from 'react-scroll';
 
 import 'animate.css';
+import Button from 'components/Button';
 
 const roles = [
   {
@@ -52,6 +59,7 @@ const TeamSorter: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
 
   const [newPlayer, setNewPlayer] = useState<Player>({
+    id: keygen(),
     rank: 0,
     battleTag: '',
     role: '',
@@ -73,6 +81,7 @@ const TeamSorter: React.FC = () => {
         50,
       );
       setNewPlayer({
+        id: keygen(),
         rank: 0,
         battleTag: '',
         role: '',
@@ -156,8 +165,8 @@ const TeamSorter: React.FC = () => {
             ))}
           </span>
         </InputContainer>
-        <SecondaryButton
-          type="button"
+        <Button
+          type="primary"
           onClick={() => handleAddPlayer(newPlayer)}
           style={{ margin: '20px 0' }}
           disabled={
@@ -168,7 +177,7 @@ const TeamSorter: React.FC = () => {
           }
         >
           <FormattedMessage id="app.teamSorter.add" />
-        </SecondaryButton>
+        </Button>
         <PlayerList id="playerList">
           {players.map((player) => (
             <PlayerDisplay
@@ -178,8 +187,8 @@ const TeamSorter: React.FC = () => {
           ))}
         </PlayerList>
         {players.length >= 12 && (
-          <PrimaryButton
-            type="button"
+          <Button
+            type="primary"
             onClick={() => {
               const { teams: fullTeams, bench: benchedPlayers } =
                 sortTeams(players);
@@ -195,7 +204,7 @@ const TeamSorter: React.FC = () => {
             className="animate__animated animate__fadeIn animate__fast"
           >
             <FormattedMessage id="app.teamSorter.sort" />
-          </PrimaryButton>
+          </Button>
         )}
         <TeamContainer teams={teams.length} id="team-container">
           {!!teams.length &&
