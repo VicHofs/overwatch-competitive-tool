@@ -42,7 +42,7 @@ const PlayerDisplay: React.FC<PlayerDisplayProps> = ({
       )}
       <span>
         <img src={rankIcon(rank)} alt={rankName(rank)} />
-        {battleTag.split('#')[0]}
+        <p>{battleTag.split('#')[0]}</p>
       </span>
       <img src={iconMap[role]} alt={`${role}`} className="roleIcon" />
     </Container>

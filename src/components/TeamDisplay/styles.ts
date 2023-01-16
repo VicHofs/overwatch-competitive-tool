@@ -15,16 +15,13 @@ export const Container = styled.div<StyleProps>`
   ${({ animationDelay }) =>
     animationDelay ? `animation-delay: ${animationDelay};` : ''}
 
-  span {
+  > span {
     display: flex;
     flex-direction: row;
     place-content: space-between;
     place-items: center;
     height: 80px;
-
-    img {
-      height: 50%;
-    }
+    width: 300px;
   }
 
   sup {
@@ -40,6 +37,7 @@ export const Container = styled.div<StyleProps>`
 `;
 
 export const Heading = styled.span<HeadingProps>`
+  transition: background-color 200ms ease-out;
   display: flex;
   flex-direction: row;
   place-content: space-between;
@@ -50,7 +48,17 @@ export const Heading = styled.span<HeadingProps>`
   background-color: ${({ color }) => color ?? 'none'};
   color: white;
 
+  > span {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    place-items: center;
+    height: 100%;
+    width: max-content;
+  }
+
   img {
-    height: 80%;
+    height: 70%;
+    transform: scale(1.5);
   }
 `;

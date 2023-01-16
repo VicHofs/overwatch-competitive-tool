@@ -1,3 +1,4 @@
+import { Container as RankPickerContainer } from 'components/RankPicker/styles';
 import styled from 'styled-components';
 
 interface TeamContainerProps {
@@ -49,6 +50,10 @@ export const InputContainer = styled.span`
     flex-direction: column;
     margin-bottom: 30px;
 
+    ${RankPickerContainer} {
+      margin-top: 25px;
+    }
+
     input:first-child {
       margin-right: 0;
     }
@@ -59,6 +64,7 @@ export const InputContainer = styled.span`
 
     span {
       margin-top: 10px;
+      margin-bottom: 15px;
     }
   }
 `;
@@ -125,15 +131,11 @@ export const RoleIcon = styled.img`
   cursor: pointer;
 
   &:hover {
-    opacity: 1;
-    filter: invert(46%) sepia(89%) saturate(2744%) hue-rotate(192deg)
-      brightness(101%) contrast(99%);
+    opacity: 0.75;
   }
 
   &:focus {
-    opacity: 1;
-    filter: invert(46%) sepia(89%) saturate(2744%) hue-rotate(192deg)
-      brightness(101%) contrast(99%);
+    opacity: 0.75;
   }
 
   &.selected {

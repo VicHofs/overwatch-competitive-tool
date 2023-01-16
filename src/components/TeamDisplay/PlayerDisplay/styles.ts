@@ -21,6 +21,7 @@ export const Overlay = styled.span`
 `;
 
 export const Container = styled.div`
+  transition: border-left 200ms ease-out;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -29,17 +30,20 @@ export const Container = styled.div`
   height: 50px;
   width: 300px;
   background-color: ${({ theme }) => theme.colors.contrastSoft}30;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 5px;
 
   font-family: BigNoodle, sans-serif;
   font-style: italic;
   font-size: 25px;
 
   span img {
-    height: 70%;
+    height: 100%;
+    transform: scale(1.4);
   }
 
-  span {
+  > span {
+    overflow: hidden;
+    min-width: 90%;
     height: 100%;
     display: flex;
     align-items: center;

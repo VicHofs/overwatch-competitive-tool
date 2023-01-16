@@ -23,7 +23,7 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
   animationDelay,
 }) => {
   const averageRank = Math.round(
-    members.reduce((accum, player) => accum + player.rank, 0) / 6,
+    members.reduce((accum, player) => accum + player.rank, 0) / 5,
   );
   return (
     <Container className={className} animationDelay={animationDelay}>

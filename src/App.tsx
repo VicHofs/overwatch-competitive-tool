@@ -6,6 +6,7 @@ import {
   altSortTeams,
   keygen,
   rankMask,
+  rankToSR,
   readCSV,
   sortTeams,
   TeamInfo,
@@ -28,7 +29,7 @@ import ReactFileReader from 'react-file-reader';
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
 import supportIcon from 'assets/images/icons/support.svg';
-import { Player } from 'helpers/formats';
+import { Elo, Player, Tier } from 'helpers/formats';
 import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
 import { animateScroll, scroller } from 'react-scroll';
@@ -38,6 +39,7 @@ import Sleep from 'assets/images/sleep.svg';
 import 'animate.css';
 import Button from 'components/Button';
 import { FiUpload } from 'react-icons/fi';
+import RankPicker from 'components/RankPicker';
 
 const roles = [
   {
@@ -58,6 +60,24 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
   return players.some(
     (item) => JSON.stringify(item) === JSON.stringify(player),
   );
+};
+
+const eloAliases = {
+  bronze: ['b', 'br', 'bz', 'bronze'],
+  silver: ['s', 'si', 'sv', 'silver'],
+  gold: ['g', 'go', 'gl', 'gold'],
+  platinum: ['p', 'pl', 'pt', 'plat', 'platinum'],
+  diamond: ['d', 'di', 'dm', 'dim', 'dia', 'diamond'],
+  master: ['m', 'ma', 'ms', 'master', 'masters'],
+  grandmaster: [
+    'g',
+    'gr',
+    'gm',
+    'grandmaster',
+    'grandmasters',
+    'grand master',
+    'grand masters',
+  ],
 };
 
 const App: React.FC = () => {
@@ -96,7 +116,48 @@ const App: React.FC = () => {
   };
 
   const handleReadCSV = async (files: FileList) => {
-    const result = (await readCSV(files[0])) as Player[];
+    const result = (await readCSV(files[0], {
+      headers: true,
+      headerAliases: {
+        battleTag: [
+          'btag',
+          'tag',
+          'battle tag',
+          'gamertag',
+          'gamer tag',
+          'player',
+          'user',
+          'name',
+        ],
+        role: ['position', 'main role', 'class'],
+        rank: ['sr', 'rating', 'skill rating', 'elo'],
+      },
+      masks: {
+        rank: (value) => {
+          if (!value.match(/\D/)) {
+            if (!value.match(/\d/)) throw new Error('improper rank formatting');
+            return Number(value);
+          }
+          const eloMatch = value.match(/\D*(?=((?<=[^ ])\d)|\b\s+\d?$|$)/);
+          console.log({ eloMatch });
+          if (!eloMatch) throw new Error('improper rank formatting');
+          const elo = Object.keys(eloAliases).includes(eloMatch[0])
+            ? eloMatch[0]
+            : Object.keys(eloAliases)[
+                Object.keys(eloAliases).findIndex((key) =>
+                  eloAliases[key as keyof typeof eloAliases].includes(
+                    eloMatch[0],
+                  ),
+                )
+              ];
+          console.log({ elo });
+          return rankToSR(
+            elo as Elo,
+            Math.max(1, Math.min(5, Number(value.match(/\d/)) || 3)) as Tier,
+          );
+        },
+      },
+    })) as Player[];
     result.forEach((player, index) => {
       if (!player.id)
         result[index] = {
@@ -145,7 +206,13 @@ const App: React.FC = () => {
             }
           }}
         >
-          <Input
+          <RankPicker
+            style={{ marginRight: 5, marginBottom: 5 }}
+            onChange={(rank) =>
+              setNewPlayer((prevState) => ({ ...prevState, rank }))
+            }
+          />
+          {/* <Input
             ref={rankInputRef}
             type="text"
             placeholder="Rank"
@@ -163,7 +230,7 @@ const App: React.FC = () => {
               })
             }
             className={newPlayer.rank ? 'filled' : ''}
-          />
+          /> */}
           <Input
             type="text"
             placeholder="Battletag#00000"

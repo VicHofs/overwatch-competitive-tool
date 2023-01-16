@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers, randomizePlayers } from 'mock';
@@ -6,14 +6,15 @@ import {
   altSortTeams,
   keygen,
   rankMask,
+  readCSV,
   sortTeams,
   TeamInfo,
 } from 'helpers/functions';
 import Header from 'components/Header';
-import { Context } from 'components/DataWrapper';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import {
   BenchContainer,
+  EmptyZone,
   Input,
   InputContainer,
   PlayerList,
@@ -22,6 +23,7 @@ import {
 } from 'styles';
 import { v5 as uuidv5 } from 'uuid';
 import { randomBytes } from 'crypto';
+import ReactFileReader from 'react-file-reader';
 
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
@@ -31,8 +33,11 @@ import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
 import { animateScroll, scroller } from 'react-scroll';
 
+import Sleep from 'assets/images/sleep.svg';
+
 import 'animate.css';
 import Button from 'components/Button';
+import { FiUpload } from 'react-icons/fi';
 
 const roles = [
   {
@@ -56,6 +61,7 @@ const alreadyIncludedIn = (player: Player, players: Player[]) => {
 };
 
 const TeamSorter: React.FC = () => {
+  const rankInputRef = useRef<HTMLInputElement>(null);
   const [players, setPlayers] = useState<Player[]>([]);
 
   const [newPlayer, setNewPlayer] = useState<Player>({
@@ -89,6 +95,21 @@ const TeamSorter: React.FC = () => {
     }
   };
 
+  const handleReadCSV = async (files: FileList) => {
+    const result = (await readCSV(files[0])) as Player[];
+    result.forEach((player, index) => {
+      if (!player.id)
+        result[index] = {
+          ...player,
+          id: keygen(),
+        };
+    });
+    if (!result[0].battleTag || !result[0].rank || !result[0].role)
+      console.error('ERROR: Invalid CSV fields');
+    else setPlayers((prevState) => [...prevState, ...result]);
+    console.log(result);
+  };
+
   return (
     <>
       <Header />
@@ -116,12 +137,20 @@ const TeamSorter: React.FC = () => {
         >
           randomize players
         </button> */}
-        <InputContainer>
+        <InputContainer
+          onKeyDown={({ key }) => {
+            if (key === 'Enter') {
+              rankInputRef.current?.focus();
+              handleAddPlayer(newPlayer);
+            }
+          }}
+        >
           <Input
+            ref={rankInputRef}
             type="text"
             placeholder="Rank"
             value={rankMask(String(newPlayer.rank))}
-            style={{ width: 50, marginRight: 10 }}
+            style={{ width: 50 }}
             maxLength={4}
             onChange={(e) =>
               setNewPlayer((prevState) => {
@@ -151,8 +180,17 @@ const TeamSorter: React.FC = () => {
           <span>
             {roles.map((item) => (
               <RoleIcon
+                tabIndex={0}
                 src={item.icon}
                 alt={`select ${item.name}`}
+                onKeyDown={({ key }) => {
+                  if (key === ' ')
+                    setNewPlayer((prevState) => {
+                      if (prevState.role !== item.name)
+                        return { ...prevState, role: item.name };
+                      return { ...prevState, role: '' };
+                    });
+                }}
                 onClick={() =>
                   setNewPlayer((prevState) => {
                     if (prevState.role !== item.name)
@@ -166,9 +204,12 @@ const TeamSorter: React.FC = () => {
           </span>
         </InputContainer>
         <Button
-          type="primary"
-          onClick={() => handleAddPlayer(newPlayer)}
-          style={{ margin: '20px 0' }}
+          type="secondary"
+          onClick={() => {
+            rankInputRef.current?.focus();
+            handleAddPlayer(newPlayer);
+          }}
+          style={{ margin: '30px 0' }}
           disabled={
             !newPlayer.rank ||
             !newPlayer.battleTag ||
@@ -182,6 +223,12 @@ const TeamSorter: React.FC = () => {
           {players.map((player) => (
             <PlayerDisplay
               {...player}
+              overlay
+              onClick={() =>
+                setPlayers((prevState) =>
+                  prevState.filter((item) => item.id !== player.id),
+                )
+              }
               className="animate__animated animate__fadeInUp animate__fast"
             />
           ))}
@@ -194,10 +241,14 @@ const TeamSorter: React.FC = () => {
                 sortTeams(players);
               setTeams(fullTeams);
               if (benchedPlayers) setBench(benchedPlayers);
-              scroller.scrollTo('team-container', {
-                smooth: 'easeOutCubic',
-                duration: 3000,
-              });
+              setTimeout(
+                () =>
+                  scroller.scrollTo('team-container', {
+                    smooth: 'easeOutCubic',
+                    duration: 3000,
+                  }),
+                50,
+              );
             }}
             style={{ marginTop: 20 }}
             disabled={players.length < 2}
@@ -206,9 +257,31 @@ const TeamSorter: React.FC = () => {
             <FormattedMessage id="app.teamSorter.sort" />
           </Button>
         )}
-        <TeamContainer teams={teams.length} id="team-container">
-          {!!teams.length &&
-            teams.map((team) => (
+        {!players.length && (
+          <EmptyZone>
+            <img src={Sleep} alt="zzz" />
+            <h1>
+              <FormattedMessage
+                id="app.teamSorter.greeting"
+                defaultMessage="Add some players to get started!"
+              />
+            </h1>
+            <p style={{ marginTop: '15px', marginBottom: '10px' }}>
+              <FormattedMessage id="app.teamSorter.or" defaultMessage="or" />
+            </p>
+            <ReactFileReader fileTypes={['.csv']} handleFiles={handleReadCSV}>
+              <button type="button" title=".csv">
+                <FormattedMessage
+                  id="app.teamSorter.readCsv"
+                  defaultMessage="read from a .csv file"
+                />
+              </button>
+            </ReactFileReader>
+          </EmptyZone>
+        )}
+        {!!teams.length && (
+          <TeamContainer teams={teams.length} id="team-container">
+            {teams.map((team) => (
               <TeamDisplay
                 members={team.members}
                 color={team.color}
@@ -218,7 +291,8 @@ const TeamSorter: React.FC = () => {
                 animationDelay={`${0.5 * (team.id - 1)}s`}
               />
             ))}
-        </TeamContainer>
+          </TeamContainer>
+        )}
         {!!bench.length && (
           <BenchContainer>
             <h3
