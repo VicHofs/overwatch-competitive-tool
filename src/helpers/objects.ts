@@ -1,7 +1,7 @@
 import tankIcon from 'assets/images/icons/tank.png';
 import damageIcon from 'assets/images/icons/damage.png';
 import supportIcon from 'assets/images/icons/support.png';
-import { Elo, Tier } from './formats';
+import { Elo, Role, Tier } from './formats';
 
 export const elos: Elo[] = [
   'bronze',
@@ -20,8 +20,13 @@ export const iconMap: { [key: string]: string } = {
   support: supportIcon,
 };
 
-export const roles = {
-  tank: { id: 1, name: 'tank', aliases: ['heavy'] },
-  damage: { id: 2, name: 'damage', aliases: ['DPS', 'dmg'] },
-  support: { id: 3, name: 'support', aliases: ['sup', 'supp', 'healer'] },
+export const roles: Record<string, Role> = {
+  tank: { id: 1, name: 'tank', aliases: ['heavy'], icon: tankIcon },
+  damage: { id: 2, name: 'damage', aliases: ['dps', 'dmg'], icon: damageIcon },
+  support: {
+    id: 3,
+    name: 'support',
+    aliases: ['sup', 'supp', 'healer'],
+    icon: supportIcon,
+  },
 };

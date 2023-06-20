@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const { currTheme, selectLang, selectTheme, locale } = useContext(Context);
 
   return (
-    <Container>
+    <Container id="header">
       <TitleContainer>
         <img
           src={currTheme.title === 'light' ? DarkOverwatchLogo : OverwatchLogo}

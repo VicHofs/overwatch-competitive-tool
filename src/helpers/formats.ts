@@ -26,3 +26,10 @@ export type Elo =
   | 'grandmaster';
 
 export type Tier = 1 | 2 | 3 | 4 | 5;
+
+export interface Role {
+  id: 1 | 2 | 3 | 4;
+  name: 'tank' | 'support' | 'damage' | 'flex';
+  aliases: Array<string>;
+  icon: string;
+}

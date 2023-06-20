@@ -31,6 +31,8 @@ import FuturaSingle from 'assets/fonts/Futura.ttf';
 import BigNoodleRegular from 'assets/fonts/BigNoodle.ttf';
 import BigNoodleItalic from 'assets/fonts/BigNoodleItalic.ttf';
 
+import OW2Bold from 'assets/fonts/OW2.ttf';
+
 export const Industry = css`
   @font-face {
     font-family: 'Industry';
@@ -193,5 +195,13 @@ export const BigNoodle = css`
   @font-face {
     font-family: 'BigNoodle';
     src: url(${BigNoodleItalic});
+    font-style: italic;
+  }
+`;
+
+export const OW2 = css`
+  @font-face {
+    font-family: 'OW2';
+    src: url(${OW2Bold});
   }
 `;

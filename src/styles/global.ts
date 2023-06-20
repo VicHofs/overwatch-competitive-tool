@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { CustomTheme } from './themes/default';
 
-import { Industry, BigNoodle, Futura, Roboto } from './fonts';
+import { Industry, BigNoodle, Futura, Roboto, OW2 } from './fonts';
 
 const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
   ${Industry}
@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
   ${Futura}
 
   ${Roboto}
+
+  ${OW2}
 
   :root {
     --animate-delay: 0.5s;
