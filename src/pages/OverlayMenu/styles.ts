@@ -12,3 +12,11 @@ export const PageTitle = styled.h1`
   margin-bottom: 40px;
   text-align: center;
 `;
+
+export const StepsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+
+  margin-bottom: 60px;
+`;

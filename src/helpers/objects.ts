@@ -1,6 +1,7 @@
-import tankIcon from 'assets/images/icons/tank.png';
-import damageIcon from 'assets/images/icons/damage.png';
-import supportIcon from 'assets/images/icons/support.png';
+import tankIcon from 'assets/images/icons/tank.svg';
+import damageIcon from 'assets/images/icons/damage.svg';
+import supportIcon from 'assets/images/icons/support.svg';
+import flexIcon from 'assets/images/icons/flex.svg';
 import { Elo, Role, Tier } from './formats';
 
 export const elos: Elo[] = [
@@ -28,5 +29,11 @@ export const roles: Record<string, Role> = {
     name: 'support',
     aliases: ['sup', 'supp', 'healer'],
     icon: supportIcon,
+  },
+  flex: {
+    id: 0,
+    name: 'flex',
+    aliases: ['all', 'any', 'flx'],
+    icon: flexIcon,
   },
 };

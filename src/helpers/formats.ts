@@ -28,7 +28,7 @@ export type Elo =
 export type Tier = 1 | 2 | 3 | 4 | 5;
 
 export interface Role {
-  id: 1 | 2 | 3 | 4;
+  id: 0 | 1 | 2 | 3;
   name: 'tank' | 'support' | 'damage' | 'flex';
   aliases: Array<string>;
   icon: string;

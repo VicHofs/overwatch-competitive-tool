@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Container, PageTitle } from './styles';
+import { Container, PageTitle, StepsContainer } from './styles';
 import { Input, InputContainer, RoleIcon } from 'styles';
 import { roles } from 'helpers/objects';
 import { Role } from 'helpers/formats';
 import Button from 'components/Button';
 
 import { useNavigate } from 'react-router-dom';
+import Step from 'components/Step';
 
 const OverlayMenu: React.FC = () => {
   const [battletag, setBattletag] = useState('');
@@ -14,12 +15,34 @@ const OverlayMenu: React.FC = () => {
   return (
     <Container>
       <PageTitle>Stream Overlay</PageTitle>
+      <StepsContainer>
+        <Step
+          step={1}
+          title="Get Link"
+          description="Generate a personal link below"
+        />
+        <Step
+          step={2}
+          title="Add Source"
+          description="Create a new Browser Source in your streaming software"
+        />
+        <Step
+          step={3}
+          title="Paste Link"
+          description="Paste the link into your source"
+        />
+      </StepsContainer>
       <InputContainer
         onKeyDown={(e) => {
           if (e.key === 'Enter' && role && battletag.match(/[^#]+#\d+/)) {
-            navigate(
-              `/overlay/${battletag.replace('#', '-')}?role=${
-                role?.name === 'damage' ? 'offense' : role?.name
+            navigator.clipboard.writeText(
+              `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
+                '#',
+                '-',
+              )}${
+                role && role.name !== 'flex'
+                  ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
+                  : ''
               }`,
             );
           }
@@ -50,12 +73,27 @@ const OverlayMenu: React.FC = () => {
       <Button
         disabled={!role || !battletag.match(/[^#]+#\d+/)}
         style={{ marginTop: 40 }}
-        onClick={() =>
-          navigate(
-            `/overlay/${battletag.replace('#', '-')}?role=${
-              role?.name === 'damage' ? 'offense' : role?.name
-            }`,
-          )
+        onClick={
+          (e) => {
+            navigator.clipboard.writeText(
+              `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
+                '#',
+                '-',
+              )}${
+                role && role.name !== 'flex'
+                  ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
+                  : ''
+              }`,
+            );
+            (e.target as HTMLButtonElement).blur();
+          }
+          // navigate(
+          //   `/overlay/${battletag.replace('#', '-')}${
+          //     role && role.name !== 'flex'
+          //       ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
+          //       : ''
+          //   }`,
+          // )
         }
       >
         Generate Overlay Source

@@ -1,18 +1,32 @@
 import styled, { keyframes } from 'styled-components';
 
+const fadeInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 const fadeInDown = keyframes`
   from {
+    opacity: 0;
     transform: translateY(-15px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 `;
 const fadeInDownRotated = keyframes`
   from {
+    opacity: 0;
     transform: translateY(-15px) rotate(-3.8deg);
   }
   to {
+    opacity: 1;
     transform: translateY(0) rotate(-3.8deg);
   }
 `;
@@ -27,6 +41,8 @@ export const Container = styled.div`
     height: 100%;
     position: absolute;
     top: 0;
+
+    animation: ${fadeInLeft} 500ms cubic-bezier(0.11, 0.53, 0.27, 1);
   }
 `;
 
