@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://vichofs.github.io/overwatch-competitive-tool/",
   "dependencies": {
+    "@rive-app/react-canvas": "^3.0.53",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

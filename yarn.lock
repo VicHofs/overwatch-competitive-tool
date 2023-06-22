@@ -1599,6 +1599,18 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.6.3.tgz#8205baf6e17ef93be35bf62c37d2d594e9be0dad"
   integrity sha512-EXJysQ7J3veRECd0kZFQwYYd5sJMcq2O/m60zu1W2l3oVQ9xtub8jTOtYRE0+M2iomyG/W3Ps7+vp2kna0C27Q==
 
+"@rive-app/canvas@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-1.2.0.tgz#246219f3d25bc6b54416d118207a095ccd12cfcf"
+  integrity sha512-Wm6bQiE9F5+vE9R/zTnGOH3yNM8Dim+81dI2MWeuOFJ2mmdKWgsFir1tdHFjmndESNKySO7cFs8xZ4TVLERWlQ==
+
+"@rive-app/react-canvas@^3.0.53":
+  version "3.0.53"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-3.0.53.tgz#7b0d23f4d5c24c5f46364fe1edd44d75f466f47f"
+  integrity sha512-iPSvBMA3jNJLXTyCRMj9NQTpWHAupGdXbY4z0OiPR6SCB+LothdputEq43g3p3PTxVC5ujHCRLrr4P7f0drZnw==
+  dependencies:
+    "@rive-app/canvas" "1.2.0"
+
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"

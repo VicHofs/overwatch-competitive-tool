@@ -13,14 +13,14 @@ const Step: React.FC<StepProps> = ({ step, title, description, children }) => {
       <StepNumber>{step}</StepNumber>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <div
+      {/* <div
         style={{
           width: 320,
           height: 180,
           borderRadius: 10,
           border: '2px solid #ffffff30',
         }}
-      />
+      /> */}
       <>{children}</>
     </StepContainer>
   );
