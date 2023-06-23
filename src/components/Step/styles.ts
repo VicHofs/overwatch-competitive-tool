@@ -19,6 +19,7 @@ export const StepNumber = styled.div`
   font-weight: bold;
   display: flex;
   align-items: center;
+  vertical-align: middle;
   justify-content: center;
   width: 24px;
   aspect-ratio: 1 / 1;
@@ -26,6 +27,7 @@ export const StepNumber = styled.div`
   background-color: ${({ theme }) => theme.colors.accent};
   border-radius: 50%;
   margin-bottom: 10px;
+  user-select: none;
 `;
 
 export const Title = styled.h3`

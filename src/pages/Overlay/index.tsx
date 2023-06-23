@@ -74,6 +74,7 @@ const Overlay: React.FC = () => {
     document.body.style.overflow = 'hidden';
   }, []);
   useEffect(() => {
+    document.title = `Stream Overlay - ${tag?.split('-')[0]}`;
     fetchData();
     const interval = setInterval(fetchData, 5000); // update every 30 minutes
     return () => clearInterval(interval);

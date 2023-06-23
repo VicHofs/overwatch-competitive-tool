@@ -1,11 +1,17 @@
-import React, { useContext, useEffect } from 'react';
-import { Container, TitleContainer, ToolContainer } from './styles';
+import React, { useContext } from 'react';
+import {
+  Container,
+  TitleContainer,
+  SettingsContainer,
+  ToolsContainer,
+  RouteLink,
+} from './styles';
 import { Context } from 'components/DataWrapper';
 
 import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg';
 import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { setCookie } from 'helpers/cookies';
 
 const Header: React.FC = () => {
@@ -20,11 +26,29 @@ const Header: React.FC = () => {
           src={currTheme.title === 'light' ? DarkOverwatchLogo : OverwatchLogo}
           alt="Overwatch Logo"
         />
-        <h1>Competitive Tool</h1>
+        <h1 className="long">Competitive Tool</h1>
+        <h1 className="short">CT</h1>
       </TitleContainer>
-      <ToolContainer>
-        <select
+      <ToolsContainer>
+        <RouteLink
+          tabIndex={1} // tabIndex is currently necessary because of row-reverse to show settings correctly
+          // TODO: rewrite without having to use tabIndex
+          href="/sorter"
+          current={window.location.pathname === '/sorter'}
+        >
+          Team Sorter
+        </RouteLink>
+        <RouteLink
           tabIndex={2}
+          href="/overlay"
+          current={window.location.pathname === '/overlay'}
+        >
+          Stream Overlay
+        </RouteLink>
+      </ToolsContainer>
+      <SettingsContainer>
+        <select
+          tabIndex={3}
           title={intl.formatMessage({ id: 'app.language' })}
           name="language"
           id="langSelect"
@@ -42,7 +66,7 @@ const Header: React.FC = () => {
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select
-          tabIndex={1}
+          tabIndex={4}
           title={intl.formatMessage({ id: 'app.theme' })}
           name="theme"
           id="themeSelect"
@@ -64,7 +88,7 @@ const Header: React.FC = () => {
             })}
           </option>
         </select>
-      </ToolContainer>
+      </SettingsContainer>
     </Container>
   );
 };

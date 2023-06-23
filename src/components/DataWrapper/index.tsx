@@ -9,6 +9,7 @@ import GlobalStyles from 'styles/global';
 import defaultTheme from 'styles/themes/default';
 import darkTheme from 'styles/themes/dark';
 import { getCookies } from 'helpers/cookies';
+import { Toaster } from 'react-hot-toast';
 
 interface DataWrapperProps {
   children: ReactNode;
@@ -76,6 +77,16 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
     <Context.Provider value={{ locale, selectLang, currTheme, selectTheme }}>
       <ThemeProvider theme={currTheme}>
         <IntlProvider locale={locale} defaultLocale="en-US" messages={lang}>
+          <Toaster
+            toastOptions={{
+              position: 'bottom-center',
+              style: {
+                userSelect: 'none',
+                backgroundColor: currTheme.colors.primarySoft,
+                color: currTheme.colors.contrastSoft,
+              },
+            }}
+          />
           {children}
         </IntlProvider>
         <GlobalStyles />

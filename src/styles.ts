@@ -5,6 +5,10 @@ interface TeamContainerProps {
   teams?: number;
 }
 
+interface DividerProps {
+  vertical?: boolean;
+}
+
 export const Input = styled.input`
   background-color: transparent;
   border: none;
@@ -193,4 +197,12 @@ export const BenchContainer = styled.div`
   div + div {
     margin-top: 5px;
   }
+`;
+
+export const Divider = styled.span<DividerProps>`
+  background-color: ${({ theme }) => theme.colors.contrastSoft}30;
+  ${({ vertical }) =>
+    vertical
+      ? 'width: 2px; height: 80%; margin: 0 15px;'
+      : 'height: 2px; width: 80%; margin: 15px 0;'}
 `;

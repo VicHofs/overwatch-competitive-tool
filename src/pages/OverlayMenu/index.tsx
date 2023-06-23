@@ -11,18 +11,24 @@ import OCT from 'assets/Rive/oct.riv';
 import SLOBS from 'assets/Rive/slobs.riv';
 import { useTheme } from 'styled-components';
 import { getCookies } from 'helpers/cookies';
+import toast from 'react-hot-toast';
 
 const rivePlayerCommonSettings = {
   height: 180,
   width: 320,
   borderRadius: 10,
   overflow: 'hidden',
+  boxShadow:
+    '0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05)',
 };
 
 const initialArtboard =
   getCookies()['prefers-theme'] === 'light' ? 'Light Mode' : 'Dark Mode'; // ? theme from useTheme() doesn't update fast enough, this is a workaround
 
 const OverlayMenu: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Stream Overlay Setup - Overwatch Competitive Tool';
+  }, []);
   // TODO: refactor sequence playing logic (maybe use rive.on() api); fix all steps playing on theme switch
   const [step1complete, setStep1Complete] = useState(false);
   const [step2complete, setStep2Complete] = useState(false);
@@ -128,9 +134,9 @@ const OverlayMenu: React.FC = () => {
         </Step>
       </StepsContainer>
       <InputContainer
-        onKeyDown={(e) => {
+        onKeyDown={async (e) => {
           if (e.key === 'Enter' && role && battletag.match(/[^#]+#\d+/)) {
-            navigator.clipboard.writeText(
+            await navigator.clipboard.writeText(
               `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
                 '#',
                 '-',
@@ -140,6 +146,7 @@ const OverlayMenu: React.FC = () => {
                   : ''
               }`,
             );
+            toast.success('Link copied!');
           }
         }}
       >
@@ -168,8 +175,8 @@ const OverlayMenu: React.FC = () => {
       <Button
         disabled={!role || !battletag.match(/[^#]+#\d+/)}
         style={{ marginTop: 40 }}
-        onClick={(e) => {
-          navigator.clipboard.writeText(
+        onClick={async (e) => {
+          await navigator.clipboard.writeText(
             `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
               '#',
               '-',
@@ -179,6 +186,7 @@ const OverlayMenu: React.FC = () => {
                 : ''
             }`,
           );
+          toast.success('Link copied!');
           (e.target as HTMLButtonElement).blur();
         }}
       >

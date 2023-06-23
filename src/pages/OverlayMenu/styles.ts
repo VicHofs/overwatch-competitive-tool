@@ -19,4 +19,8 @@ export const StepsContainer = styled.div`
   gap: 50px;
 
   margin-bottom: 60px;
+
+  @media (max-width: 1145px) {
+    display: none;
+  }
 `;
