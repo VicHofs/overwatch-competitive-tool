@@ -1,7 +1,16 @@
 {
-  "app.test": "isto é um teste",
   "app.language": "Idioma",
   "app.theme": "Tema",
+
+  "app.terms.bronze": "Bronze",
+  "app.terms.silver": "Prata",
+  "app.terms.gold": "Ouro",
+  "app.terms.platinum": "Platina",
+  "app.terms.diamond": "Diamante",
+  "app.terms.master": "Mestre",
+  "app.terms.grandmaster": "Grão-mestre",
+  "app.terms.t500": "Top 500",
+
   "app.teamSorter.or": "ou",
   "app.teamSorter.readCsv": "importe um arquivo .csv",
   "app.themes.darkTheme": "Tema Escuro",

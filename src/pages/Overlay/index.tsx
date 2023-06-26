@@ -8,6 +8,7 @@ import Banner from 'assets/images/Transparent Rank Banner.png';
 import bronze from 'assets/videos/bronze.webm';
 import silver from 'assets/videos/silver.webm';
 import gold from 'assets/videos/gold.webm';
+import platinum from 'assets/videos/platinum.webm';
 import diamond from 'assets/videos/diamond.webm';
 import master from 'assets/videos/masters.webm';
 import grandmaster from 'assets/videos/grandmaster.webm';
@@ -25,6 +26,7 @@ const overlays = {
   bronze,
   silver,
   gold,
+  platinum,
   diamond,
   master,
   grandmaster,

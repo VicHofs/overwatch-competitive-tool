@@ -5,6 +5,7 @@ interface RouteLinkProps {
 }
 
 export const Container = styled.header`
+  position: relative;
   display: flex;
   flex-direction: row;
   height: 80px;
@@ -25,7 +26,7 @@ export const Container = styled.header`
     display: none;
   }
 
-  @media (max-width: 1110px) {
+  @media (max-width: 1300px) {
     .long {
       display: none;
     }
@@ -34,9 +35,10 @@ export const Container = styled.header`
     }
   }
 
-  @media (max-width: 880px) {
+  @media (max-width: 1065px) {
     justify-content: space-between;
     padding: 10px 0;
+    padding-left: 100px;
     select {
       display: none;
     }
@@ -45,7 +47,8 @@ export const Container = styled.header`
     }
   }
 
-  @media (max-width: 412px) {
+  @media (max-width: 875px) {
+    padding-left: 0;
     justify-content: center;
     h1 {
       display: none;
@@ -69,11 +72,19 @@ export const TitleContainer = styled.span`
 `;
 
 export const ToolsContainer = styled.span`
+  // absolutely position centered
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50%;
+  text-align: center;
+
   display: flex;
   flex-direction: row;
   height: 80px;
 
-  @media (max-width: 412px) {
+  @media (max-width: 875px) {
     display: none;
   }
 `;
@@ -82,7 +93,7 @@ export const RouteLink = styled.a<RouteLinkProps>`
   position: relative;
   display: flex;
   place-items: center;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   height: 100%;
   padding: 0 10px;

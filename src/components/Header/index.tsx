@@ -21,7 +21,11 @@ const Header: React.FC = () => {
 
   return (
     <Container id="header">
-      <TitleContainer>
+      <TitleContainer
+        onClick={() => {
+          window.location.href = '/';
+        }}
+      >
         <img
           src={currTheme.title === 'light' ? DarkOverwatchLogo : OverwatchLogo}
           alt="Overwatch Logo"

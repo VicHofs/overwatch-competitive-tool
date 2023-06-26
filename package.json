@@ -1,6 +1,6 @@
 {
   "name": "overwatch-competitive-tool",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "homepage": "https://vichofs.github.io/overwatch-competitive-tool/",
   "dependencies": {

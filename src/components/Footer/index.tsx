@@ -71,7 +71,12 @@ const Footer: React.FC = () => {
           Overwatch is a trademark of Blizzard Entertainment, Inc., in the U.S.
           and/or other countries. This is an independent application developed
           with no relationship with, sponsorship, or endorsement by Blizzard.
-          <br />
+        </p>
+        <p style={{ marginTop: 5, opacity: 0.3, maxWidth: '70%' }}>
+          © 2023 Victor Hofstetter.{' '}
+          <a style={{ color: 'inherit' }} href="https://github.com/vichofs">
+            Report a bug
+          </a>
         </p>
       </InfoContainer>
     </Container>

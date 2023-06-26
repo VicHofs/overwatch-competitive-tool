@@ -206,3 +206,11 @@ export const Divider = styled.span<DividerProps>`
       ? 'width: 2px; height: 80%; margin: 0 15px;'
       : 'height: 2px; width: 80%; margin: 15px 0;'}
 `;
+
+export const TitleDivider = styled.span<DividerProps>`
+  background-color: ${({ theme }) => theme.colors.accent};
+  ${({ vertical }) =>
+    vertical
+      ? 'width: 20px; height: 15%; margin: 0 15px;'
+      : 'height: 20px; width: 15%; margin: 15px 0;'}
+`;
