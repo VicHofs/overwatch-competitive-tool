@@ -148,10 +148,11 @@ const OverlayMenu: React.FC = () => {
           if (e.key === 'Enter' && role && battletag.match(/[^#]+#\d+/)) {
             await navigator.clipboard.writeText(
               `${
-                window.location.host === 'vichofs.github.io'
-                  ? `${window.location.host}/overwatch-competitive-tool`
-                  : window.location.host
-              }/overlay/${battletag.replace('#', '-')}${
+                window.location.host
+              }/overwatch-competitive-tool/overlay/${battletag.replace(
+                '#',
+                '-',
+              )}${
                 role && role.name !== 'flex'
                   ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
                   : ''
@@ -189,10 +190,11 @@ const OverlayMenu: React.FC = () => {
         onClick={async (e) => {
           await navigator.clipboard.writeText(
             `${
-              window.location.host === 'vichofs.github.io'
-                ? `${window.location.host}/overwatch-competitive-tool`
-                : window.location.host
-            }/overlay/${battletag.replace('#', '-')}${
+              window.location.host
+            }/overwatch-competitive-tool/overlay/${battletag.replace(
+              '#',
+              '-',
+            )}${
               role && role.name !== 'flex'
                 ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
                 : ''

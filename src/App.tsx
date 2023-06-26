@@ -12,27 +12,27 @@ import { AppContainer } from 'styles';
 
 const router = createBrowserRouter([
   {
-    path: '/sorter',
+    path: '/overwatch-competitive-tool/sorter',
     element: <TeamSorter />,
   },
   {
-    path: '/overlay',
+    path: '/overwatch-competitive-tool/overlay',
     element: <OverlayMenu />,
   },
   {
-    path: '/overlay/:tag',
+    path: '/overwatch-competitive-tool/overlay/:tag',
     element: <Overlay />,
   },
   {
-    path: '/tools',
+    path: '/overwatch-competitive-tool/tools',
     element: <Tools />,
   },
   {
-    path: '/about',
+    path: '/overwatch-competitive-tool/about',
     element: <About />,
   },
   {
-    path: '/',
+    path: '/overwatch-competitive-tool',
     element: <Home />,
   },
 ]);

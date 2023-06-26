@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     <Container id="header">
       <TitleContainer
         onClick={() => {
-          window.location.href = '/';
+          window.location.href = '/overwatch-competitive-tool';
         }}
       >
         <img
@@ -38,14 +38,14 @@ const Header: React.FC = () => {
         <RouteLink
           tabIndex={1} // tabIndex is currently necessary because of row-reverse to show settings correctly
           // TODO: rewrite without having to use tabIndex
-          href="/sorter"
+          href="/overwatch-competitive-tool/sorter"
           current={window.location.pathname === '/sorter'}
         >
           <FormattedMessage id="app.tools.teamSorter.title" />
         </RouteLink>
         <RouteLink
           tabIndex={2}
-          href="/overlay"
+          href="/overwatch-competitive-tool/overlay"
           current={window.location.pathname === '/overlay'}
         >
           <FormattedMessage id="app.tools.overlay.title" />

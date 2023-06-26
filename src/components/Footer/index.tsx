@@ -41,13 +41,13 @@ const Footer: React.FC = () => {
       <LinksContainer>
         {/* // ? using react-router-dom navigation crashes the page for some reason  */}
         {/* // TODO: rewrite using react-router-dom navigation  */}
-        <a href="/">
+        <a href="/overwatch-competitive-tool">
           <FormattedMessage id="app.pages.home" />
         </a>
-        <a href="/about">
+        <a href="/overwatch-competitive-tool/about">
           <FormattedMessage id="app.pages.about" />
         </a>
-        <a href="/tools">
+        <a href="/overwatch-competitive-tool/tools">
           <FormattedMessage id="app.pages.tools" />
         </a>
       </LinksContainer>
