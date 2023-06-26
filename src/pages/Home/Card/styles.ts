@@ -14,6 +14,7 @@ export const Container = styled.div`
   place-items: center;
   place-content: center;
   text-align: center;
+  color: ${({ theme }) => theme.colors.contrastSoft};
 
   ${TitleDivider} {
     height: 0.781275vw;
@@ -32,7 +33,6 @@ export const Container = styled.div`
     font-size: 0.97659375vw;
     max-height: 12.5004vw;
     font-family: Roboto;
-    color: ${({ theme }) => theme.colors.contrastSoft};
     opacity: 0.8;
     line-height: 1.56255vw;
     overflow: hidden;

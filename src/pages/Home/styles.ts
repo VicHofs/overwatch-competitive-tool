@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   place-items: center;
   gap: 20px;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 445px);
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.contrastSoft};
+  color: ${({ theme }) => theme.colors.contrast};
 `;
 
 export const HeroContainer = styled.div`
@@ -19,7 +19,7 @@ export const HeroContainer = styled.div`
   place-items: center;
   justify-content: space-between;
   gap: 20px;
-  height: 500px;
+  min-height: 500px;
   background-color: ${({ theme }) => theme.colors.primary}60;
 `;
 

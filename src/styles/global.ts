@@ -91,6 +91,10 @@ const GlobalStyles = createGlobalStyle<{ theme: CustomTheme }>`
         background-color: transparent;
       }
     }
+
+    a {
+      color: unset;
+    }
   }
 `;
 

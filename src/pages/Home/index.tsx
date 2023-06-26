@@ -19,11 +19,13 @@ import { TbFreeRights } from 'react-icons/tb';
 import { HiUserGroup } from 'react-icons/hi2';
 import { GiEyeTarget } from 'react-icons/gi';
 import Button from 'components/Button';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const initialArtboard =
   getCookies()['prefers-theme'] === 'light' ? 'Light Mode' : 'Dark Mode'; // ? theme from useTheme() doesn't update fast enough, this is a workaround
 
 const Home: React.FC = () => {
+  const intl = useIntl();
   const theme = useTheme();
   const { rive, RiveComponent } = useRive({
     src: Chart,
@@ -48,17 +50,26 @@ const Home: React.FC = () => {
       <HeroContainer>
         <TitleContainer>
           <h1>
-            <span className="accent">Your</span>
-            <br />
-            Competitive Tool
+            <FormattedMessage
+              id="app.home.title"
+              values={{
+                accent: (chunks: string) => (
+                  <span className="accent">{chunks}</span>
+                ),
+                br: <br />,
+              }}
+            />
           </h1>
           <TitleDivider />
           <p>
-            The <span className="bold">Overwatch Competitive Tool (OWCT)</span>{' '}
-            project is a suite of tools for everyone—from professional players
-            and streamers to casual and competitive players—designed to make
-            Overwatch organized tournaments, streaming, and competitive play a
-            better experience than ever.
+            <FormattedMessage
+              id="app.home.description"
+              values={{
+                bold: (chunks: string) => (
+                  <span className="bold">{chunks}</span>
+                ),
+              }}
+            />
           </p>
         </TitleContainer>
         <ContentContainer>
@@ -69,22 +80,30 @@ const Home: React.FC = () => {
       <CardContainer>
         <Card
           IconComponent={TbFreeRights}
-          title="Free"
-          description="All features of the tool are 100% free for everyone, forever. That means no ads, subscriptions, or hidden fees—just pure awesomeness. The project is funded solely by donations and the support of the Overwatch community."
+          title={intl.messages['app.home.cards.free.title'] as string}
+          description={
+            intl.messages['app.home.cards.free.description'] as string
+          }
         />
         <Card
           IconComponent={HiUserGroup}
-          title="Open"
-          description="The Project is open-source and primarily based on demands and contributions from the Overwatch community. Suggestions and Requests are always welcome, and new tools are rolled out according to that demand."
+          title={intl.messages['app.home.cards.open.title'] as string}
+          description={
+            intl.messages['app.home.cards.open.description'] as string
+          }
         />
         <Card
           IconComponent={GiEyeTarget}
-          title="Aimed"
-          description="The Competitive Tool is made by players, for players. We believe reciprocity is the best way to develop tools that make sense for everyone, and to that end, all developers who ever work on the project are Overwatch veterans."
+          title={intl.messages['app.home.cards.aimed.title'] as string}
+          description={
+            intl.messages['app.home.cards.aimed.description'] as string
+          }
         />
       </CardContainer>
       <Divider style={{ width: '30%' }} />
-      <Button style={{ marginTop: 10, marginBottom: 20 }}>Get Started</Button>
+      <Button style={{ marginTop: 10, marginBottom: 20 }}>
+        <FormattedMessage id="app.home.getStarted" />
+      </Button>
     </Container>
   );
 };

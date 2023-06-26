@@ -12,6 +12,7 @@ import SLOBS from 'assets/Rive/slobs.riv';
 import { useTheme } from 'styled-components';
 import { getCookies } from 'helpers/cookies';
 import toast from 'react-hot-toast';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const rivePlayerCommonSettings = {
   height: 180,
@@ -26,6 +27,7 @@ const initialArtboard =
   getCookies()['prefers-theme'] === 'light' ? 'Light Mode' : 'Dark Mode'; // ? theme from useTheme() doesn't update fast enough, this is a workaround
 
 const OverlayMenu: React.FC = () => {
+  const intl = useIntl();
   useEffect(() => {
     document.title = 'Stream Overlay Setup - Overwatch Competitive Tool';
   }, []);
@@ -108,27 +110,35 @@ const OverlayMenu: React.FC = () => {
   const [role, setRole] = useState<Role | null>();
   return (
     <Container>
-      <PageTitle>Stream Overlay</PageTitle>
+      <PageTitle>
+        <FormattedMessage id="app.overlay.title" />
+      </PageTitle>
       {/* // TODO: implement play on hover for each step */}
       <StepsContainer>
         <Step
           step={1}
-          title="Get Link"
-          description="Generate a personal link below"
+          title={intl.messages['app.overlay.guide.step1.title'] as string}
+          description={
+            intl.messages['app.overlay.guide.step1.description'] as string
+          }
         >
           <Step1 style={rivePlayerCommonSettings} />
         </Step>
         <Step
           step={2}
-          title="Add Source"
-          description="Create a new Browser Source in your streaming software"
+          title={intl.messages['app.overlay.guide.step2.title'] as string}
+          description={
+            intl.messages['app.overlay.guide.step2.description'] as string
+          }
         >
           <Step2 style={rivePlayerCommonSettings} />
         </Step>
         <Step
           step={3}
-          title="Paste Link"
-          description="Paste the link into your source URL"
+          title={intl.messages['app.overlay.guide.step3.title'] as string}
+          description={
+            intl.messages['app.overlay.guide.step3.description'] as string
+          }
         >
           <Step3 style={rivePlayerCommonSettings} />
         </Step>
@@ -137,16 +147,17 @@ const OverlayMenu: React.FC = () => {
         onKeyDown={async (e) => {
           if (e.key === 'Enter' && role && battletag.match(/[^#]+#\d+/)) {
             await navigator.clipboard.writeText(
-              `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
-                '#',
-                '-',
-              )}${
+              `${
+                window.location.host === 'vichofs.github.io'
+                  ? `${window.location.host}/overwatch-competitive-tool`
+                  : window.location.host
+              }/overlay/${battletag.replace('#', '-')}${
                 role && role.name !== 'flex'
                   ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
                   : ''
               }`,
             );
-            toast.success('Link copied!');
+            toast.success(intl.messages['app.messages.linkCopied'] as string);
           }
         }}
       >
@@ -177,20 +188,21 @@ const OverlayMenu: React.FC = () => {
         style={{ marginTop: 40 }}
         onClick={async (e) => {
           await navigator.clipboard.writeText(
-            `https://vichofs.github.io/overwatch-competitive-tool/overlay/${battletag.replace(
-              '#',
-              '-',
-            )}${
+            `${
+              window.location.host === 'vichofs.github.io'
+                ? `${window.location.host}/overwatch-competitive-tool`
+                : window.location.host
+            }/overlay/${battletag.replace('#', '-')}${
               role && role.name !== 'flex'
                 ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
                 : ''
             }`,
           );
-          toast.success('Link copied!');
+          toast.success(intl.messages['app.messages.linkCopied'] as string);
           (e.target as HTMLButtonElement).blur();
         }}
       >
-        Generate Overlay Source
+        <FormattedMessage id="app.overlay.generate" />
       </Button>
     </Container>
   );

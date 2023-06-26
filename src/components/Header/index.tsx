@@ -11,13 +11,14 @@ import { Context } from 'components/DataWrapper';
 import OverwatchLogo from 'assets/images/OverwatchLogoLight.svg';
 import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { setCookie } from 'helpers/cookies';
 
 const Header: React.FC = () => {
   const intl = useIntl();
 
-  const { currTheme, selectLang, selectTheme, locale } = useContext(Context);
+  const { currTheme, selectLang, selectTheme, locale, languages } =
+    useContext(Context);
 
   return (
     <Container id="header">
@@ -40,14 +41,14 @@ const Header: React.FC = () => {
           href="/sorter"
           current={window.location.pathname === '/sorter'}
         >
-          Team Sorter
+          <FormattedMessage id="app.tools.teamSorter.title" />
         </RouteLink>
         <RouteLink
           tabIndex={2}
           href="/overlay"
           current={window.location.pathname === '/overlay'}
         >
-          Stream Overlay
+          <FormattedMessage id="app.tools.overlay.title" />
         </RouteLink>
       </ToolsContainer>
       <SettingsContainer>
@@ -61,12 +62,11 @@ const Header: React.FC = () => {
             setCookie('prefers-language', e.target.value);
           }}
         >
-          <option value="en-US" selected={locale === 'en-US'}>
-            English (US)
-          </option>
-          <option value="pt-BR" selected={locale === 'pt-BR'}>
-            Português (BR)
-          </option>
+          {Object.keys(languages).map((lang) => (
+            <option value={lang} selected={locale === lang}>
+              {languages[lang].name}
+            </option>
+          ))}
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select

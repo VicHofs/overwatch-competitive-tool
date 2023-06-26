@@ -62,6 +62,7 @@ export const RankIcon = styled.video`
 `;
 
 export const RankLabel = styled.p`
+  font-weight: 700;
   user-select: none;
   font-size: 1.7vh;
   text-transform: uppercase;

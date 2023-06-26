@@ -1,15 +1,31 @@
 {
   "app.language": "Idioma",
   "app.theme": "Tema",
+  "app.loading": "carregando",
 
-  "app.terms.bronze": "Bronze",
-  "app.terms.silver": "Prata",
-  "app.terms.gold": "Ouro",
-  "app.terms.platinum": "Platina",
-  "app.terms.diamond": "Diamante",
-  "app.terms.master": "Mestre",
-  "app.terms.grandmaster": "Grão-mestre",
-  "app.terms.t500": "Top 500",
+  "app.messages.linkCopied": "Link copiado!",
+
+  "app.terms.bronze": "bronze",
+  "app.terms.silver": "prata",
+  "app.terms.gold": "ouro",
+  "app.terms.platinum": "platina",
+  "app.terms.diamond": "diamante",
+  "app.terms.master": "mestre",
+  "app.terms.grandmaster": "grao-mestre",
+  "app.terms.t500": "top 500",
+
+  "app.home.title": "<accent>Sua</accent>{br} Ferramenta Competitiva",
+  "app.home.description": "O projeto <bold>Overwatch Competitive Tool (OWCT)</bold> é um conjunto de ferramentas para todos—de jogadores profissionais e streamers a jogadores casuais e competitivos—projetado para tornar os torneios organizados, streaming e jogos competitivos de Overwatch uma experiência melhor do que nunca.",
+  "app.home.cards.free.title": "Custo Zero",
+  "app.home.cards.free.description": "Todos os recursos da ferramenta são 100% gratuitos para todos, para sempre. Isso significa sem anúncios, assinaturas ou custos ocultos—só resultados. O projeto é financiado exclusivamente por doações e pelo apoio da comunidade de Overwatch.",
+  "app.home.cards.open.title": "Aberto",
+  "app.home.cards.open.description": "O projeto é de código aberto e baseado principalmente em demandas e contribuições da comunidade de Overwatch. Sugestões e Solicitações são sempre bem-vindas, e novas ferramentas são lançadas de acordo com a demanda.",
+  "app.home.cards.aimed.title": "Focado",
+  "app.home.cards.aimed.description": "A Ferramenta é feita por jogadores, para jogadores. Acreditamos que benefício mútuo é o melhor jeito de desenvolver ferramentas que fazem sentido para todos; portanto, todos os desenvolvedores que trabalharão no projeto serão veteranos de Overwatch.",
+  "app.home.getStarted": "Começar",
+
+  "app.about.title": "Sobre",
+  "app.about.body": "O projeto <bold>Overwatch Competitive Tool (OWCT)</bold> foi iniciado com <strikethrough> o Recall do Winston</strikethrough> a percepção de que, embora muitos outros jogos (VALORANT, CS:GO, League of Legends) tenham várias ferramentas na web que ajudam jogadores competitivos a crescer, o mesmo não pode ser dito para Overwatch. O objetivo da aplicação é fornecer diversas ferramentas que ajudam jogadores de todos os estilos, de streamers e players profissionais a jogadores casuais e competitivos.{br}{br}Atualmente, a OWCT está sendo desenvolvida por <bold>Victor Hofstetter</bold> (VicHofs), engenheiro de software, mas também streamer de Overwatch e jogador nos Overwatch Collegiates USA (e notório Genji Main). No entanto, o projeto é de código aberto e qualquer contribuição é bem-vinda. Alguns exemplos de contribuições importantes são traduções, designs, e código. Entre em contato com VicHofs pelo <discord>Discord</discord>, <twitch>Twitch</twitch> ou <twitter>Twitter</twitter> se quiser contribuir!{br}{br}O aplicativo ainda está em seus estágios iniciais, então o apoio da comunidade é mais importante do que nunca neste momento. Se você está lendo isso agora, isso significa que você já está participando de seu crescimento (obrigado!), mas se você gostaria de se tornar um apoiador ativo, considere <bmc>fazer uma doação</bmc> ou entrar no <discord>Fox Den</discord> para dar feedback!",
 
   "app.teamSorter.or": "ou",
   "app.teamSorter.readCsv": "importe um arquivo .csv",
@@ -20,5 +36,28 @@
   "app.teamSorter.add": "Adicionar Jogador",
   "app.teamSorter.sort": "Montar Times",
   "app.teamSorter.team": "Time {number}",
-  "app.teamSorter.bench": "Banco"
+  "app.teamSorter.bench": "Banco",
+
+  "app.overlay.title": "Overlay de Stream",
+  "app.overlay.guide.step1.title": "Gerar Link",
+  "app.overlay.guide.step1.description": "Gere um link pessoal abaixo",
+  "app.overlay.guide.step2.title": "Adicionar Fonte",
+  "app.overlay.guide.step2.description": "Crie uma nova Fonte de Navegador no seu app de streaming",
+  "app.overlay.guide.step3.title": "Colar Link",
+  "app.overlay.guide.step3.description": "Cole o link copiado na URL da fonte",
+  "app.overlay.generate": "Gerar Link de Navegador",
+
+  "app.pages.home": "Início",
+  "app.pages.about": "Sobre",
+  "app.pages.tools": "Recursos",
+
+  "app.tools.teamSorter.title": "Montador de Times",
+  "app.tools.teamSorter.description": "Classificador de times para torneios organizados. Jogadores são adicionados por role e rank ou lidos em massa de um arquivo e separados automaticamente nos times mais equilibrados.",
+  "app.tools.overlay.title": "Overlay de Stream",
+  "app.tools.overlay.description": "Overlay de Stream animado que exibe uma leitura ao vivo do rank do jogador definido por role ou geral. Atualiza automaticamente a cada 30 minutos.",
+
+  "app.footer.signature": "Feito com 🧡 por <bold>Victor Hofstetter</bold>",
+  "app.footer.bmcText": "Me pague um cafézinho",
+  "app.footer.disclaimer": "<overwatch>Overwatch</overwatch> é uma marca comercial da Blizzard Entertainment, Inc., nos Estados Unidos e/ou em outros países. Este é um aplicativo independente desenvolvido sem nenhuma relação, patrocínio ou endosso da Blizzard.",
+  "app.footer.info": "© 2023 Victor Hofstetter. <bugReport>Reporte um problema</bugReport>"
 }

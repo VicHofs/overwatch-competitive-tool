@@ -8,6 +8,7 @@ import Footer from 'components/Footer';
 import Tools from 'pages/Tools';
 import About from 'pages/About';
 import Home from 'pages/Home';
+import { AppContainer } from 'styles';
 
 const router = createBrowserRouter([
   {
@@ -38,11 +39,11 @@ const router = createBrowserRouter([
 
 const App: React.FC = () => {
   return (
-    <>
+    <AppContainer>
       <Header />
       <RouterProvider router={router} />
       <Footer />
-    </>
+    </AppContainer>
   );
 };
 

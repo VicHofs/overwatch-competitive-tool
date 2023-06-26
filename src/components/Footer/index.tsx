@@ -17,6 +17,7 @@ import {
   SiTwitch,
   SiBuymeacoffee,
 } from 'react-icons/si';
+import { FormattedMessage } from 'react-intl';
 
 const Footer: React.FC = () => {
   const theme = useTheme();
@@ -40,9 +41,15 @@ const Footer: React.FC = () => {
       <LinksContainer>
         {/* // ? using react-router-dom navigation crashes the page for some reason  */}
         {/* // TODO: rewrite using react-router-dom navigation  */}
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/tools">Tools</a>
+        <a href="/">
+          <FormattedMessage id="app.pages.home" />
+        </a>
+        <a href="/about">
+          <FormattedMessage id="app.pages.about" />
+        </a>
+        <a href="/tools">
+          <FormattedMessage id="app.pages.tools" />
+        </a>
       </LinksContainer>
       <Divider />
       <InfoContainer>
@@ -61,22 +68,38 @@ const Footer: React.FC = () => {
           </a>
         </SocialsContainer>
         <p style={{ opacity: 0.8 }}>
-          Made with 🧡 by <span className="bold">Victor Hofstetter</span>
+          <FormattedMessage
+            id="app.footer.signature"
+            values={{
+              bold: (chunks: string) => <span className="bold">{chunks}</span>,
+            }}
+          />
         </p>
         <a className="coffee" href="https://bmc.link/vichofs">
           <SiBuymeacoffee />
-          <p>Buy me a coffee</p>
+          <p>
+            <FormattedMessage id="app.footer.bmcText" />
+          </p>
         </a>
         <p style={{ marginTop: 20, opacity: 0.3, maxWidth: '70%' }}>
-          Overwatch is a trademark of Blizzard Entertainment, Inc., in the U.S.
-          and/or other countries. This is an independent application developed
-          with no relationship with, sponsorship, or endorsement by Blizzard.
+          <FormattedMessage
+            id="app.footer.disclaimer"
+            values={{
+              overwatch: (chunks: string) => (
+                <a href="https://overwatch.blizzard.com/en-us/">{chunks}</a>
+              ),
+            }}
+          />
         </p>
         <p style={{ marginTop: 5, opacity: 0.3, maxWidth: '70%' }}>
-          © 2023 Victor Hofstetter.{' '}
-          <a style={{ color: 'inherit' }} href="https://github.com/vichofs">
-            Report a bug
-          </a>
+          <FormattedMessage
+            id="app.footer.info"
+            values={{
+              bugReport: (chunks: string) => (
+                <a href="https://discord.gg/3AFBh7JJuB">{chunks}</a>
+              ),
+            }}
+          />
         </p>
       </InfoContainer>
     </Container>

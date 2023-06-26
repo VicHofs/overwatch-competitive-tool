@@ -1,15 +1,31 @@
 {
   "app.language": "Language",
   "app.theme": "Theme",
+  "app.loading": "loading",
 
-  "app.terms.bronze": "Bronze",
-  "app.terms.silver": "Silver",
-  "app.terms.gold": "Gold",
-  "app.terms.platinum": "Platinum",
-  "app.terms.diamond": "Diamond",
-  "app.terms.master": "Master",
-  "app.terms.grandmaster": "Grandmaster",
-  "app.terms.t500": "Top 500",
+  "app.messages.linkCopied": "Link Copied!",
+
+  "app.terms.bronze": "bronze",
+  "app.terms.silver": "silver",
+  "app.terms.gold": "gold",
+  "app.terms.platinum": "platinum",
+  "app.terms.diamond": "diamond",
+  "app.terms.master": "master",
+  "app.terms.grandmaster": "grandmaster",
+  "app.terms.t500": "top 500",
+
+  "app.home.title": "<accent>Your</accent>{br} Competitive Tool",
+  "app.home.description": "The <bold>Overwatch Competitive Tool (OWCT)</bold> project is a suite of tools for everyone—from professional players and streamers to casual and competitive players—designed to make Overwatch organized tournaments, streaming, and competitive play a better experience than ever.",
+  "app.home.cards.free.title": "Free",
+  "app.home.cards.free.description": "All features of the tool are 100% free for everyone, forever. That means no ads, subscriptions, or hidden fees—just pure awesomeness. The project is funded solely by donations and the support of the Overwatch community.",
+  "app.home.cards.open.title": "Open",
+  "app.home.cards.open.description": "The Project is open-source and primarily based on demands and contributions from the Overwatch community. Suggestions and Requests are always welcome, and new tools are rolled out according to that demand.",
+  "app.home.cards.aimed.title": "Aimed",
+  "app.home.cards.aimed.description": "The Competitive Tool is made by players, for players. We believe mutual benefit is the best way to develop tools that make sense for everyone, and to that end, all developers who ever work on the project will be Overwatch veterans.",
+  "app.home.getStarted": "Get Started",
+
+  "app.about.title": "About",
+  "app.about.body": "The <bold>Overwatch Competitive Tool (OWCT)</bold> project was started with <strikethrough>Winston's Recall</strikethrough> the realization that while many other games (VALORANT, CS:GO, League of Legends) have several tools on the web that help competitive players gain an edge, the same could not be said for Overwatch. It aims to provide several tools that help players of all styles—from streamers and professional players to casual and competitive players. {br}{br}Currently, OWCT is being single-handedly developed by <bold>Victor Hofstetter</bold> (VicHofs), a Software Engineer but also Overwatch streamer and Collegiates player (and notorious Genji Main). However, the project is open-source and any contribution is welcome. Some examples of resources that would be well-received are translations, designs, and code. Reach out to VicHofs over <discord>Discord</discord>, <twitch>Twitch</twitch>, or <twitter>Twitter</twitter> if you'd like to contribute! {br}{br}The application is still in its early stages, so support from the community is more important than ever at this time. If you're reading this right now, it means you're already playing a part in its growth (thank you!), but if you'd like to become an active early supporter, consider <bmc>making a donation</bmc> or joining <discord>Fox Den</discord> to give feedback!",
 
   "app.teamSorter.or": "or",
   "app.teamSorter.readCsv": "read from a .csv file",
@@ -20,5 +36,28 @@
   "app.teamSorter.add": "Add Player",
   "app.teamSorter.sort": "Sort Teams",
   "app.teamSorter.team": "Team {number}",
-  "app.teamSorter.bench": "Bench"
+  "app.teamSorter.bench": "Bench",
+
+  "app.overlay.title": "Stream Overlay",
+  "app.overlay.guide.step1.title": "Get Link",
+  "app.overlay.guide.step1.description": "Generate a personal link below",
+  "app.overlay.guide.step2.title": "Add Source",
+  "app.overlay.guide.step2.description": "Create a new Browser Source in your streaming software",
+  "app.overlay.guide.step3.title": "Paste Link",
+  "app.overlay.guide.step3.description": "Paste the link into your source URL",
+  "app.overlay.generate": "Generate Overlay Source",
+
+  "app.pages.home": "Home",
+  "app.pages.about": "About",
+  "app.pages.tools": "Tools",
+
+  "app.tools.teamSorter.title": "Team Sorter",
+  "app.tools.teamSorter.description": "Team sorter for organized tournaments. Players are added by role and rank or read in bulk from a file and sorted automatically into the most balanced teams.",
+  "app.tools.overlay.title": "Stream Overlay",
+  "app.tools.overlay.description": "Animated stream overlay that displays a live reading of the set player's rank by role or all-around. Updates automatically every 30 minutes.",
+
+  "app.footer.signature": "Made with 🧡 by <bold>Victor Hofstetter</bold>",
+  "app.footer.bmcText": "Buy me a coffee",
+  "app.footer.disclaimer": "<overwatch>Overwatch</overwatch> is a trademark of Blizzard Entertainment, Inc., in the U.S. and/or other countries. This is an independent application developed with no relationship with, sponsorship, or endorsement by Blizzard.",
+  "app.footer.info": "© 2023 Victor Hofstetter. <bugReport>Report a bug</bugReport>"
 }

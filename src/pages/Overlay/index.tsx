@@ -21,6 +21,7 @@ import { rankName, rankToSR } from 'helpers/functions';
 import { Elo, Tier } from 'helpers/formats';
 
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { useIntl } from 'react-intl';
 
 const overlays = {
   bronze,
@@ -50,11 +51,13 @@ const rankAvg = (ranks: Competitive) => {
 };
 
 const Overlay: React.FC = () => {
+  const intl = useIntl();
   const { search: querySearch } = useLocation();
   const queries = new URLSearchParams(querySearch);
   const { tag } = useParams();
   const [rank, setRank] = useState<string>();
   const fetchData = useCallback(async () => {
+    // uncomment below for testing with random ranks
     // setRank(
     //   `${Object.keys(overlays)[Math.floor(Math.random() * 6)]} ${
     //     Math.floor(Math.random() * 4) + 1
@@ -78,7 +81,7 @@ const Overlay: React.FC = () => {
   useEffect(() => {
     document.title = `Stream Overlay - ${tag?.split('-')[0]}`;
     fetchData();
-    const interval = setInterval(fetchData, 5000); // update every 30 minutes
+    const interval = setInterval(fetchData, 180000); // update every 30 minutes
     return () => clearInterval(interval);
   }, []);
   return (
@@ -86,7 +89,13 @@ const Overlay: React.FC = () => {
       <img src={Banner} alt="Rank Banner" />
       <TransitionGroup>
         <CSSTransition key={rank} timeout={200}>
-          <RankLabel>{rank || 'loading...'}</RankLabel>
+          <RankLabel>
+            {rank
+              ? `${
+                  intl.messages[`app.terms.${rank.split(' ')[0].toLowerCase()}`]
+                } ${rank.split(' ')[1]}`
+              : `${intl.messages[`app.loading`]}...`}
+          </RankLabel>
         </CSSTransition>
       </TransitionGroup>
       {!!rank && (

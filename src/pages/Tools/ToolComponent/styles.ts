@@ -6,9 +6,24 @@ export const Container = styled.div`
   flex-direction: row;
   gap: 30px;
 
+  svg,
+  p,
+  h2 {
+    transition: all 200ms cubic-bezier(0.11, 0.53, 0.27, 1);
+  }
+
   &:hover {
     h2 {
       transform: translateX(10px);
+    }
+
+    svg {
+      transform: scale(1.2);
+    }
+
+    p {
+      color: ${({ theme }) => theme.colors.accent};
+      opacity: 1;
     }
   }
 `;
@@ -16,10 +31,9 @@ export const Container = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 550px;
 
   h2 {
-    transition: all 200ms cubic-bezier(0.11, 0.53, 0.27, 1);
     text-transform: uppercase;
     font-size: 50px;
   }

@@ -1,0 +1,63 @@
+{
+  "app.language": "言語",
+  "app.theme": "テーマ",
+  "app.loading": "読み込み中",
+
+  "app.messages.linkCopied": "リンクのコピー完了!",
+
+  "app.terms.bronze": "ブロンズ",
+  "app.terms.silver": "シルバー",
+  "app.terms.gold": "ゴールド",
+  "app.terms.platinum": "プラチナ",
+  "app.terms.diamond": "ダイヤモンド",
+  "app.terms.master": "マスター",
+  "app.terms.grandmaster": "グランドマスター",
+  "app.terms.t500": "トップ500",
+
+  "app.home.title": "<accent>自分自身の</accent> {br}競技ツール",
+  "app.home.description": "<bold>Overwatch Competitive Tool (OWCT)</bold> プロジェクトは、プロプレイヤーやストリーマーからカジュアルプレイヤー、競技プレイヤーまで、オーバーウォッチのトーナメント、ライブ、ライバル・プレイをより良い体験にするためのツールの収集です。",
+  "app.home.cards.free.title": "無料",
+  "app.home.cards.free.description": "このツールのすべての機能は、ずっと無料です。広告や購読料、隠れた料金は一切ありません。このプロジェクトは寄付とオーバーウォッチコミュニティのサポートによってのみ資金提供されています。",
+  "app.home.cards.open.title": "オープン",
+  "app.home.cards.open.description": "このプロジェクトはオープンソースであり、主にオーバーウォッチコミュニティからの要求や貢献に基づいています。提案やリクエストは常に歓迎され、新しいツールはその要求に応じて提供されます。",
+  "app.home.cards.aimed.title": "目指す",
+  "app.home.cards.aimed.description": "競技ツールはプレイヤーによって、プレイヤーのために作られました。相互利益がすべての人にとって意味のあるツールを開発するための最善の方法だと考えています。したがって、このプロジェクトに携わるす開発者は皆オーバーウォッチのベテランです。",
+  "app.home.getStarted": "はじめる",
+
+  "app.about.title": "について",
+  "app.about.body": "<bold>Overwatch Competitive Tool (OWCT)</bold> プロジェクトは、VALORANT、CS:GO、League of Legends など他の多くのゲームがウェブ上で競技プレイヤーが優位に立つのを支援するツールを持っているのに対し、Overwatch には同じことが言えないという認識から始まりました。このプロジェクトは、ストリーマーやプロプレイヤーからカジュアルプレイヤー、競技プレイヤーまで、あらゆるスタイルのプレイヤーを支援するためのさまざまなツールを提供することを目指しています。{br}{br}現在、OWCT はソフトウェアエンジニアであり、Overwatch のストリーマーやカレジエイトプレイヤー（そして悪名高いゲンジメイン）でもあるヴィクター・ホフスタッター（VicHofs）によって個人で開発されています。ただし、プロジェクトはオープンソースであり、どんな貢献でも歓迎されています。翻訳、デザイン、コードなどのリソースの提供は大歓迎です。貢献したい場合は、ヴィクター・ホフスタッター（VicHofs）に<discord>Discord</discord>、<twitch>Twitch</twitch>、または<twitter>Twitter</twitter>で連絡してください！{br}{br}このアプリケーションはまだ初期段階にあり、コミュニティからのサポートが特に重要です。もしあなたが今これを読んでいるのなら、それはあなたが成長に一役買っていることを意味します（ありがとう！）。しかし、積極的な早期サポーターになりたい場合は、<bmc>寄付をする</bmc>か<discord>Fox Den</discord>に参加してフィードバックを提供してください！",
+
+  "app.teamSorter.or": "または",
+  "app.teamSorter.readCsv": ".csv ファイルから読み込む",
+  "app.themes.darkTheme": "ダークテーマ",
+  "app.themes.lightTheme": "ライトテーマ",
+  "app.teamSorter.title": "チームソーター",
+  "app.teamSorter.greeting": "いくつかのプレイヤーを追加してみてください！",
+  "app.teamSorter.add": "プレイヤーの追加",
+  "app.teamSorter.sort": "チームをソート",
+  "app.teamSorter.team": "チーム {number}",
+  "app.teamSorter.bench": "控え席",
+
+  "app.overlay.title": "ストリームオーバーレイ",
+  "app.overlay.guide.step1.title": "リンクの取得",
+  "app.overlay.guide.step1.description": "以下から個人用リンクを生成します",
+  "app.overlay.guide.step2.title": "ソースの追加",
+  "app.overlay.guide.step2.description": "ライブ配信のアプリで新しいブラウザソースを作成します",
+  "app.overlay.guide.step3.title": "リンクの貼り付け",
+  "app.overlay.guide.step3.description": "リンクを「URL」欄に貼り付けます",
+  "app.overlay.generate": "オーバーレイソースの生成",
+
+  "app.pages.home": "ホーム",
+  "app.pages.about": "OWCTについて",
+  "app.pages.tools": "ツール",
+
+  "app.tools.teamSorter.title": "チームソーター",
+  "app.tools.teamSorter.description": "オーガナイズされたトーナメント用のチームソーター。プレイヤーを役割とランクで追加するか、ファイルから一括で読み込んで最もバランスの取れたチームに自動的にソートします。",
+  "app.tools.overlay.title": "ライブオーバーレイ",
+  "app.tools.overlay.description": "セットされたプレイヤーの役割ごとまたは全体的なランクのライブ表示を行うアニメーション付きストリームオーバーレイ。30分ごとに自動的に更新されます。",
+
+  "app.footer.signature": "<bold>ヴィクター・ホフスタッター</bold>によって🧡で作成されました",
+  "app.footer.bmcText": "コーヒーを買ってあげる",
+  "app.footer.disclaimer": "<overwatch>オーバーウォッチ</overwatch> はBlizzard Entertainment, Inc.の商標であり、米国および/またはその他の国における商標です。このアプリケーションは独立したものであり、Blizzard との関係、スポンサーシップ、または承認はありません。",
+  "app.footer.info": "© 2023 Victor Hofstetter. <bugReport>問題の報告</bugReport>"
+}
