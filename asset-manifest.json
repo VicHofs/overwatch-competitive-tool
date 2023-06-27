@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/overwatch-competitive-tool/static/js/main.be394987.chunk.js",
-    "main.js.map": "/overwatch-competitive-tool/static/js/main.be394987.chunk.js.map",
+    "main.js": "/overwatch-competitive-tool/static/js/main.1e76b16c.chunk.js",
+    "main.js.map": "/overwatch-competitive-tool/static/js/main.1e76b16c.chunk.js.map",
     "runtime-main.js": "/overwatch-competitive-tool/static/js/runtime-main.4e2da1ce.js",
     "runtime-main.js.map": "/overwatch-competitive-tool/static/js/runtime-main.4e2da1ce.js.map",
     "static/css/2.a1596f27.chunk.css": "/overwatch-competitive-tool/static/css/2.a1596f27.chunk.css",
@@ -95,6 +95,6 @@
     "static/js/runtime-main.4e2da1ce.js",
     "static/css/2.a1596f27.chunk.css",
     "static/js/2.bdae2907.chunk.js",
-    "static/js/main.be394987.chunk.js"
+    "static/js/main.1e76b16c.chunk.js"
   ]
 }
