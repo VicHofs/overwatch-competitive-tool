@@ -33,3 +33,5 @@ export interface Role {
   aliases: Array<string>;
   icon: string;
 }
+
+export const battletagRegex = /[^#]+#\d+/;

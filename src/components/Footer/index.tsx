@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import {
   Container,
+  FooterLink,
   InfoContainer,
   LinksContainer,
   LogoContainer,
@@ -41,15 +42,15 @@ const Footer: React.FC = () => {
       <LinksContainer>
         {/* // ? using react-router-dom navigation crashes the page for some reason  */}
         {/* // TODO: rewrite using react-router-dom navigation  */}
-        <a href="/">
+        <FooterLink to="/">
           <FormattedMessage id="app.pages.home" />
-        </a>
-        <a href="/about">
+        </FooterLink>
+        <FooterLink to="/about">
           <FormattedMessage id="app.pages.about" />
-        </a>
-        <a href="/tools">
+        </FooterLink>
+        <FooterLink to="/tools">
           <FormattedMessage id="app.pages.tools" />
-        </a>
+        </FooterLink>
       </LinksContainer>
       <Divider />
       <InfoContainer>

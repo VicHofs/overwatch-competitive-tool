@@ -93,7 +93,7 @@ const Overlay: React.FC = () => {
             {rank
               ? `${
                   intl.messages[`app.terms.${rank.split(' ')[0].toLowerCase()}`]
-                } ${rank.split(' ')[1]}`
+                } ${rank === 'unranked' ? '' : rank.split(' ')[1]}`
               : `${intl.messages[`app.loading`]}...`}
           </RankLabel>
         </CSSTransition>

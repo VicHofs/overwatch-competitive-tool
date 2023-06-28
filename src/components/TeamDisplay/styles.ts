@@ -60,5 +60,6 @@ export const Heading = styled.span<HeadingProps>`
   img {
     height: 70%;
     transform: scale(1.5);
+    user-select: none;
   }
 `;

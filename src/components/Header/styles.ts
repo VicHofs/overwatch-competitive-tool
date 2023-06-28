@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface RouteLinkProps {
@@ -6,6 +7,7 @@ interface RouteLinkProps {
 
 export const Container = styled.header`
   position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   height: 80px;
@@ -89,7 +91,7 @@ export const ToolsContainer = styled.span`
   }
 `;
 
-export const RouteLink = styled.a<RouteLinkProps>`
+export const RouteLink = styled(Link)<RouteLinkProps>`
   position: relative;
   display: flex;
   place-items: center;

@@ -13,6 +13,7 @@
   "app.terms.master": "master",
   "app.terms.grandmaster": "grandmaster",
   "app.terms.t500": "top 500",
+  "app.terms.unranked": "unranked",
 
   "app.home.title": "<accent>Your</accent>{br} Competitive Tool",
   "app.home.description": "The <bold>Overwatch Competitive Tool (OWCT)</bold> project is a suite of tools for everyone—from professional players and streamers to casual and competitive players—designed to make Overwatch organized tournaments, streaming, and competitive play a better experience than ever.",
@@ -27,16 +28,22 @@
   "app.about.title": "About",
   "app.about.body": "The <bold>Overwatch Competitive Tool (OWCT)</bold> project was started with <strikethrough>Winston's Recall</strikethrough> the realization that while many other games (VALORANT, CS:GO, League of Legends) have several tools on the web that help competitive players gain an edge, the same could not be said for Overwatch. It aims to provide several tools that help players of all styles—from streamers and professional players to casual and competitive players. {br}{br}Currently, OWCT is being single-handedly developed by <bold>Victor Hofstetter</bold> (VicHofs), a Software Engineer but also Overwatch streamer and Collegiates player (and notorious Genji Main). However, the project is open-source and any contribution is welcome. Some examples of resources that would be well-received are translations, designs, and code. Reach out to VicHofs over <discord>Discord</discord>, <twitch>Twitch</twitch>, or <twitter>Twitter</twitter> if you'd like to contribute! {br}{br}The application is still in its early stages, so support from the community is more important than ever at this time. If you're reading this right now, it means you're already playing a part in its growth (thank you!), but if you'd like to become an active early supporter, consider <bmc>making a donation</bmc> or joining <discord>Fox Den</discord> to give feedback!",
 
-  "app.teamSorter.or": "or",
-  "app.teamSorter.readCsv": "read from a .csv file",
   "app.themes.darkTheme": "Dark Theme",
   "app.themes.lightTheme": "Light Theme",
+
+  "app.teamSorter.or": "or",
+  "app.teamSorter.readCsv": "read from a .csv file",
   "app.teamSorter.title": "Team Sorter",
   "app.teamSorter.greeting": "Add some players to get started!",
   "app.teamSorter.add": "Add Player",
   "app.teamSorter.sort": "Sort Teams",
   "app.teamSorter.team": "Team {number}",
   "app.teamSorter.bench": "Bench",
+  "app.teamSorter.playerDataLoading": "Fetching player rank",
+  "app.teamSorter.playerDataSuccess": "Auto-set player rank successfully",
+  "app.teamSorter.playerDataNotFound": "Player not found",
+  "app.teamSorter.playerDataPrivate": "Player's profile is private; changes to this setting may take a few hours to update.",
+  "app.teamSorter.playerDataUnranked": "Player is unranked for this role; no changes made.",
 
   "app.overlay.title": "Stream Overlay",
   "app.overlay.guide.step1.title": "Get Link",
@@ -46,11 +53,15 @@
   "app.overlay.guide.step3.title": "Paste Link",
   "app.overlay.guide.step3.description": "Paste the link into your source URL",
   "app.overlay.generate": "Generate Overlay Source",
+  "app.overlay.playerDataLoading": "Fetching player data",
+  "app.overlay.playerDataNotFound": "Player not found",
+  "app.overlay.playerDataPrivate": "Your profile is private; changes to this setting may take a few hours to update.",
 
   "app.pages.home": "Home",
   "app.pages.about": "About",
   "app.pages.tools": "Tools",
 
+  "app.tools.title": "Tools",
   "app.tools.teamSorter.title": "Team Sorter",
   "app.tools.teamSorter.description": "Team sorter for organized tournaments. Players are added by role and rank or read in bulk from a file and sorted automatically into the most balanced teams.",
   "app.tools.overlay.title": "Stream Overlay",

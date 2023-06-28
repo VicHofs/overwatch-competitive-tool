@@ -13,9 +13,11 @@ import DarkOverwatchLogo from 'assets/images/OverwatchLogoDark.svg';
 import { GiEarthAmerica } from 'react-icons/gi';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { setCookie } from 'helpers/cookies';
+import { useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const intl = useIntl();
+  const location = useLocation();
 
   const { currTheme, selectLang, selectTheme, locale, languages } =
     useContext(Context);
@@ -24,7 +26,7 @@ const Header: React.FC = () => {
     <Container id="header">
       <TitleContainer
         onClick={() => {
-          window.location.href = '/';
+          window.location.href = '/overwatch-competitive-tool/#';
         }}
       >
         <img
@@ -38,21 +40,22 @@ const Header: React.FC = () => {
         <RouteLink
           tabIndex={1} // tabIndex is currently necessary because of row-reverse to show settings correctly
           // TODO: rewrite without having to use tabIndex
-          href="/sorter"
-          current={window.location.pathname === '/sorter'}
+          to="/sorter"
+          current={location.pathname === '/sorter'}
         >
           <FormattedMessage id="app.tools.teamSorter.title" />
         </RouteLink>
         <RouteLink
           tabIndex={2}
-          href="/overlay"
-          current={window.location.pathname === '/overlay'}
+          to="/overlay"
+          current={location.pathname === '/overlay'}
         >
           <FormattedMessage id="app.tools.overlay.title" />
         </RouteLink>
       </ToolsContainer>
       <SettingsContainer>
         <select
+          value={locale}
           tabIndex={3}
           title={intl.formatMessage({ id: 'app.language' })}
           name="language"
@@ -63,13 +66,14 @@ const Header: React.FC = () => {
           }}
         >
           {Object.keys(languages).map((lang) => (
-            <option value={lang} selected={locale === lang}>
+            <option value={lang} key={lang}>
               {languages[lang].name}
             </option>
           ))}
         </select>
         <GiEarthAmerica size={18} style={{ marginLeft: 20 }} />
         <select
+          value={currTheme.title}
           tabIndex={4}
           title={intl.formatMessage({ id: 'app.theme' })}
           name="theme"
@@ -79,13 +83,13 @@ const Header: React.FC = () => {
             setCookie('prefers-theme', e.target.value);
           }}
         >
-          <option value="light" selected={currTheme.title === 'light'}>
+          <option value="light">
             {intl.formatMessage({
               id: 'app.themes.lightTheme',
               defaultMessage: 'Light Theme',
             })}
           </option>
-          <option value="dark" selected={currTheme.title === 'dark'}>
+          <option value="dark">
             {intl.formatMessage({
               id: 'app.themes.darkTheme',
               defaultMessage: 'Dark Theme',

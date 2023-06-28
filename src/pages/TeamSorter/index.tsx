@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import TeamDisplay from 'components/TeamDisplay';
 import { players as mockPlayers, randomizePlayers } from 'mock';
@@ -8,20 +8,13 @@ import {
   rankMask,
   rankToSR,
   readCSV,
+  scrollToTop,
   sortTeams,
   TeamInfo,
 } from 'helpers/functions';
-import Header from 'components/Header';
-import { FormattedMessage } from 'react-intl';
-import {
-  BenchContainer,
-  EmptyZone,
-  Input,
-  InputContainer,
-  PlayerList,
-  RoleIcon,
-  TeamContainer,
-} from 'styles';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Input, InputContainer, PlayerList, RoleIcon } from 'styles';
+import { EmptyZone, TeamContainer, BenchContainer } from './styles';
 import { v5 as uuidv5 } from 'uuid';
 import { randomBytes } from 'crypto';
 import ReactFileReader from 'react-file-reader';
@@ -29,7 +22,7 @@ import ReactFileReader from 'react-file-reader';
 import tankIcon from 'assets/images/icons/tank.svg';
 import damageIcon from 'assets/images/icons/damage.svg';
 import supportIcon from 'assets/images/icons/support.svg';
-import { Elo, Player, Tier } from 'helpers/formats';
+import { Elo, Player, Tier, battletagRegex } from 'helpers/formats';
 import PlayerDisplay from 'components/TeamDisplay/PlayerDisplay';
 
 import { animateScroll, scroller } from 'react-scroll';
@@ -40,6 +33,10 @@ import 'animate.css';
 import Button from 'components/Button';
 import { FiUpload } from 'react-icons/fi';
 import RankPicker from 'components/RankPicker';
+import { useDebounce } from 'hooks/useDebounce';
+import { toast } from 'react-hot-toast';
+import { getPlayerData } from 'services/owapi';
+import { Competitive } from 'services/owapi/types';
 
 const roles = [
   {
@@ -81,6 +78,8 @@ const eloAliases = {
 };
 
 const TeamSorter: React.FC = () => {
+  const intl = useIntl();
+  useEffect(scrollToTop, []);
   const rankInputRef = useRef<HTMLInputElement>(null);
   const [players, setPlayers] = useState<Player[]>([]);
 
@@ -90,6 +89,56 @@ const TeamSorter: React.FC = () => {
     battleTag: '',
     role: '',
   });
+  const debouncedTag = useDebounce(newPlayer.battleTag, 500);
+  const debouncedRole = useDebounce(newPlayer.role, 500);
+
+  useEffect(() => {
+    if (
+      !!debouncedRole &&
+      !!debouncedTag &&
+      debouncedTag.match(battletagRegex)
+    ) {
+      const toastId = toast.loading('Fetching player rank...');
+      const dataPromise = toast.promise(
+        getPlayerData(debouncedTag.replace('#', '-')),
+        {
+          loading: intl.messages['app.teamSorter.playerDataLoading'] as string,
+          success: intl.messages['app.teamSorter.playerDataSuccess'] as string,
+          error: (error: Error) =>
+            (error.message.includes('not found')
+              ? intl.messages['app.teamSorter.playerDataNotFound']
+              : intl.messages['app.teamSorter.playerDataPrivate']) as string,
+        },
+        { id: toastId },
+      );
+      dataPromise
+        .then(({ competitive }) => {
+          const modRole =
+            debouncedRole === 'damage' ? 'offense' : debouncedRole;
+          const [rankElo, rankTier] =
+            competitive[modRole as keyof Competitive]?.rank?.split(' ') || [];
+          if (rankElo && rankTier) {
+            setNewPlayer((prevState) => ({
+              ...prevState,
+              rank: rankToSR(
+                rankElo.toLowerCase() as Elo,
+                Number(rankTier) as Tier,
+              ),
+            }));
+          } else
+            toast(
+              intl.messages['app.teamSorter.playerDataUnranked'] as string,
+              {
+                icon: '⚠️',
+                id: toastId,
+              },
+            );
+        })
+        .catch((err) => {
+          /* handled by toast */
+        });
+    }
+  }, [debouncedTag, debouncedRole]);
 
   const [teams, setTeams] = useState<TeamInfo[]>([]);
   const [bench, setBench] = useState<Player[]>([]);
@@ -139,7 +188,6 @@ const TeamSorter: React.FC = () => {
             return Number(value);
           }
           const eloMatch = value.match(/\D*(?=((?<=[^ ])\d)|\b\s+\d?$|$)/);
-          console.log({ eloMatch });
           if (!eloMatch) throw new Error('improper rank formatting');
           const elo = Object.keys(eloAliases).includes(eloMatch[0])
             ? eloMatch[0]
@@ -150,7 +198,6 @@ const TeamSorter: React.FC = () => {
                   ),
                 )
               ];
-          console.log({ elo });
           return rankToSR(
             elo as Elo,
             Math.max(1, Math.min(5, Number(value.match(/\d/)) || 3)) as Tier,
@@ -175,11 +222,11 @@ const TeamSorter: React.FC = () => {
     <>
       <div
         style={{
+          flexGrow: 1,
           display: 'flex',
           flexDirection: 'column',
           placeItems: 'center',
           // placeContent: 'center',
-          minHeight: 'calc(100vh - 105px)',
         }}
       >
         <h1
@@ -206,6 +253,7 @@ const TeamSorter: React.FC = () => {
           }}
         >
           <RankPicker
+            value={newPlayer.rank}
             style={{ marginRight: 5, marginBottom: 5 }}
             onChange={(rank) =>
               setNewPlayer((prevState) => ({ ...prevState, rank }))
@@ -246,16 +294,19 @@ const TeamSorter: React.FC = () => {
           <span>
             {roles.map((item) => (
               <RoleIcon
+                key={item.name}
                 tabIndex={0}
                 src={item.icon}
                 alt={`select ${item.name}`}
-                onKeyDown={({ key }) => {
-                  if (key === ' ')
+                onKeyDown={(e) => {
+                  if (e.key === ' ') {
+                    e.preventDefault();
                     setNewPlayer((prevState) => {
                       if (prevState.role !== item.name)
                         return { ...prevState, role: item.name };
                       return { ...prevState, role: '' };
                     });
+                  }
                 }}
                 onClick={() =>
                   setNewPlayer((prevState) => {
@@ -273,11 +324,13 @@ const TeamSorter: React.FC = () => {
           type="secondary"
           onClick={() => {
             rankInputRef.current?.focus();
-            handleAddPlayer(newPlayer);
+            handleAddPlayer(
+              newPlayer.rank ? newPlayer : { ...newPlayer, rank: 2785 },
+            );
           }}
           style={{ margin: '30px 0' }}
           disabled={
-            !newPlayer.rank ||
+            (!newPlayer.rank && newPlayer.rank !== 0) ||
             !newPlayer.battleTag ||
             !newPlayer.role ||
             alreadyIncludedIn(newPlayer, players)
@@ -289,6 +342,7 @@ const TeamSorter: React.FC = () => {
           {players.map((player) => (
             <PlayerDisplay
               {...player}
+              key={player.id}
               overlay
               onClick={() =>
                 setPlayers((prevState) =>
@@ -349,6 +403,7 @@ const TeamSorter: React.FC = () => {
           <TeamContainer teams={teams.length} id="team-container">
             {teams.map((team) => (
               <TeamDisplay
+                key={team.id}
                 members={team.members}
                 color={team.color}
                 name={`Team ${team.id}`}
@@ -372,6 +427,7 @@ const TeamSorter: React.FC = () => {
             </h3>
             {bench.map((player, index) => (
               <PlayerDisplay
+                key={player.id}
                 className={`animate__animated animate__${
                   index % 2 ? 'fadeInRight' : 'fadeInLeft'
                 } animate__faster`}

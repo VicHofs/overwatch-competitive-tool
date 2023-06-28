@@ -37,6 +37,7 @@ import { Elo, Player, Tier } from './formats';
 import { randomBytes } from 'crypto';
 import { v5 as uuidv5 } from 'uuid';
 import { elos } from './objects';
+import { animateScroll } from 'react-scroll';
 
 export interface TeamInfo {
   id: number;
@@ -496,4 +497,12 @@ export const readCSV = async (
     console.error(error);
     return [];
   }
+};
+
+export const scrollToTop = (): void => {
+  animateScroll.scrollToTop({
+    delay: 0,
+    duration: 800,
+    smooth: 'easeOutCubic',
+  });
 };

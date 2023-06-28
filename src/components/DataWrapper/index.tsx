@@ -1,4 +1,10 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 import BrazilianPortuguese from 'languages/pt-BR.json';
@@ -73,7 +79,7 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
       : defaultTheme,
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cookies = getCookies();
     if (cookies['prefers-theme'])
       setCurrTheme(
@@ -87,7 +93,7 @@ const DataWrapper: React.FC<DataWrapperProps> = ({ children }) => {
           : AmericanEnglish,
       );
     }
-  });
+  }, []);
 
   const selectLang = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const newLocale = e.target.value;

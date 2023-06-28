@@ -3,6 +3,7 @@ import { IconType } from 'react-icons/lib';
 import { Container, InfoContainer } from './styles';
 import { TitleDivider } from 'styles';
 import { useTheme } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 interface ToolComponentProps {
   IconComponent: IconType;
@@ -17,18 +18,17 @@ const ToolComponent: React.FC<ToolComponentProps> = ({
   description,
   path,
 }) => {
+  const navigate = useNavigate();
   const theme = useTheme();
   return (
-    <a href={path} style={{ textDecoration: 'none', color: 'unset' }}>
-      <Container>
-        <IconComponent size={80} color={(theme as any).colors.accent} />
-        <InfoContainer>
-          <h2>{title}</h2>
-          <TitleDivider />
-          <p>{description}</p>
-        </InfoContainer>
-      </Container>
-    </a>
+    <Container onClick={() => navigate(path)}>
+      <IconComponent size={80} color={(theme as any).colors.accent} />
+      <InfoContainer>
+        <h2>{title}</h2>
+        <TitleDivider />
+        <p>{description}</p>
+      </InfoContainer>
+    </Container>
   );
 };
 

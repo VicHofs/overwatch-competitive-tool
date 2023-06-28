@@ -53,11 +53,12 @@ export const Container = styled.div`
   img {
     height: 40%;
     margin-right: 5px;
+    user-select: none;
   }
 
   .roleIcon {
-    height: 50%;
-    ${({ theme }) => (theme.title === 'light' ? 'filter: invert()' : '')}
+    height: 40%;
+    ${({ theme }) => (theme.title === 'light' ? '' : 'filter: invert()')};
   }
 
   ${Overlay} {

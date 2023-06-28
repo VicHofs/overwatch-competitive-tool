@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, PageTitle, StepsContainer } from './styles';
 import { Input, InputContainer, RoleIcon } from 'styles';
 import { roles } from 'helpers/objects';
-import { Role } from 'helpers/formats';
+import { Role, battletagRegex } from 'helpers/formats';
 import Button from 'components/Button';
 import Step from 'components/Step';
 
@@ -13,6 +13,8 @@ import { useTheme } from 'styled-components';
 import { getCookies } from 'helpers/cookies';
 import toast from 'react-hot-toast';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { scrollToTop } from 'helpers/functions';
+import { getPlayerData } from 'services/owapi';
 
 const rivePlayerCommonSettings = {
   height: 180,
@@ -29,6 +31,7 @@ const initialArtboard =
 const OverlayMenu: React.FC = () => {
   const intl = useIntl();
   useEffect(() => {
+    scrollToTop();
     document.title = 'Stream Overlay Setup - Overwatch Competitive Tool';
   }, []);
   // TODO: refactor sequence playing logic (maybe use rive.on() api); fix all steps playing on theme switch
@@ -145,20 +148,39 @@ const OverlayMenu: React.FC = () => {
       </StepsContainer>
       <InputContainer
         onKeyDown={async (e) => {
-          if (e.key === 'Enter' && role && battletag.match(/[^#]+#\d+/)) {
-            await navigator.clipboard.writeText(
-              `${
-                window.location.host === 'vichofs.github.io'
-                  ? `${window.location.host}/overwatch-competitive-tool`
-                  : window.location.host
-              }/overlay/${battletag.replace('#', '-')}${
-                role && role.name !== 'flex'
-                  ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
-                  : ''
-              }`,
-            );
-            toast.success(intl.messages['app.messages.linkCopied'] as string);
-          }
+          if (e.key !== 'Enter') return;
+          const dataPromise = toast.promise(
+            getPlayerData(battletag.replace('#', '-')),
+            {
+              loading: intl.messages['app.overlay.playerDataLoading'] as string,
+              success: intl.messages['app.messages.linkCopied'] as string,
+              error: (error: Error) =>
+                (error.message.includes('not found')
+                  ? intl.messages['app.overlay.playerDataNotFound']
+                  : intl.messages['app.overlay.playerDataPrivate']) as string,
+            },
+          );
+          dataPromise
+            .then(async () => {
+              await navigator.clipboard.writeText(
+                `${
+                  window.location.host
+                }/overwatch-competitive-tool/#/overlay/${battletag.replace(
+                  '#',
+                  '-',
+                )}${
+                  role && role.name !== 'flex'
+                    ? `?role=${
+                        role?.name === 'damage' ? 'offense' : role?.name
+                      }`
+                    : ''
+                }`,
+              );
+            })
+            .catch((err) => {
+              /* handled by toast */
+            });
+          (e.target as HTMLButtonElement).blur();
         }}
       >
         <Input
@@ -174,31 +196,54 @@ const OverlayMenu: React.FC = () => {
               tabIndex={0}
               src={item.icon}
               alt={`select ${item.name}`}
-              onKeyDown={({ key }) => {
-                if (key === ' ') setRole(item);
+              onKeyDown={(e) => {
+                if (e.key === ' ') {
+                  e.preventDefault();
+                  setRole(item);
+                }
               }}
               onClick={() => setRole(item)}
               className={role && role.id === item.id ? 'selected' : ''}
+              key={item.id}
             />
           ))}
         </span>
       </InputContainer>
       <Button
-        disabled={!role || !battletag.match(/[^#]+#\d+/)}
+        disabled={!role || !battletag.match(battletagRegex)}
         style={{ marginTop: 40 }}
         onClick={async (e) => {
-          await navigator.clipboard.writeText(
-            `${
-              window.location.host === 'vichofs.github.io'
-                ? `${window.location.host}/overwatch-competitive-tool`
-                : window.location.host
-            }/overlay/${battletag.replace('#', '-')}${
-              role && role.name !== 'flex'
-                ? `?role=${role?.name === 'damage' ? 'offense' : role?.name}`
-                : ''
-            }`,
+          const dataPromise = toast.promise(
+            getPlayerData(battletag.replace('#', '-')),
+            {
+              loading: intl.messages['app.overlay.playerDataLoading'] as string,
+              success: intl.messages['app.messages.linkCopied'] as string,
+              error: (error: Error) =>
+                (error.message.includes('not found')
+                  ? intl.messages['app.overlay.playerDataNotFound']
+                  : intl.messages['app.overlay.playerDataPrivate']) as string,
+            },
           );
-          toast.success(intl.messages['app.messages.linkCopied'] as string);
+          dataPromise
+            .then(async () => {
+              await navigator.clipboard.writeText(
+                `${
+                  window.location.host
+                }/overwatch-competitive-tool/#/overlay/${battletag.replace(
+                  '#',
+                  '-',
+                )}${
+                  role && role.name !== 'flex'
+                    ? `?role=${
+                        role?.name === 'damage' ? 'offense' : role?.name
+                      }`
+                    : ''
+                }`,
+              );
+            })
+            .catch((err) => {
+              /* handled by toast */
+            });
           (e.target as HTMLButtonElement).blur();
         }}
       >

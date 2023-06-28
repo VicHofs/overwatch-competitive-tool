@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { TitleDivider } from 'styles';
 
 export const Container = styled.div`
+  max-width: 520px;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -31,7 +33,7 @@ export const Container = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 550px;
+  width: 100%;
 
   h2 {
     text-transform: uppercase;
@@ -40,6 +42,7 @@ export const InfoContainer = styled.div`
 
   ${TitleDivider} {
     margin-left: 5px;
+    margin-right: 5px;
     margin-top: 0;
     margin-bottom: 10px;
     height: 13px;

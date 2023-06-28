@@ -48,7 +48,6 @@ export const Container = styled.div`
 
 export const RankIcon = styled.video`
   height: 100%;
-  position: absolute;
   top: 0;
 
   animation: ${fadeInDown} 200ms cubic-bezier(0.11, 0.53, 0.27, 1);

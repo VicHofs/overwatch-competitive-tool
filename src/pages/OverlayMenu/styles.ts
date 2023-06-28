@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  padding-bottom: 50px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   place-items: center;
-  min-height: calc(100vh - 105px);
 `;
 
 export const PageTitle = styled.h1`

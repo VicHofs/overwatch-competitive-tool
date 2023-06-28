@@ -13,6 +13,7 @@
   "app.terms.master": "マスター",
   "app.terms.grandmaster": "グランドマスター",
   "app.terms.t500": "トップ500",
+  "app.terms.unranked": "無段",
 
   "app.home.title": "<accent>自分自身の</accent> {br}競技ツール",
   "app.home.description": "<bold>Overwatch Competitive Tool (OWCT)</bold> プロジェクトは、プロプレイヤーやストリーマーからカジュアルプレイヤー、競技プレイヤーまで、オーバーウォッチのトーナメント、ライブ、ライバル・プレイをより良い体験にするためのツールの収集です。",
@@ -25,7 +26,7 @@
   "app.home.getStarted": "はじめる",
 
   "app.about.title": "について",
-  "app.about.body": "<bold>Overwatch Competitive Tool (OWCT)</bold> プロジェクトは、VALORANT、CS:GO、League of Legends など他の多くのゲームがウェブ上で競技プレイヤーが優位に立つのを支援するツールを持っているのに対し、Overwatch には同じことが言えないという認識から始まりました。このプロジェクトは、ストリーマーやプロプレイヤーからカジュアルプレイヤー、競技プレイヤーまで、あらゆるスタイルのプレイヤーを支援するためのさまざまなツールを提供することを目指しています。{br}{br}現在、OWCT はソフトウェアエンジニアであり、Overwatch のストリーマーやカレジエイトプレイヤー（そして悪名高いゲンジメイン）でもあるヴィクター・ホフスタッター（VicHofs）によって個人で開発されています。ただし、プロジェクトはオープンソースであり、どんな貢献でも歓迎されています。翻訳、デザイン、コードなどのリソースの提供は大歓迎です。貢献したい場合は、ヴィクター・ホフスタッター（VicHofs）に<discord>Discord</discord>、<twitch>Twitch</twitch>、または<twitter>Twitter</twitter>で連絡してください！{br}{br}このアプリケーションはまだ初期段階にあり、コミュニティからのサポートが特に重要です。もしあなたが今これを読んでいるのなら、それはあなたが成長に一役買っていることを意味します（ありがとう！）。しかし、積極的な早期サポーターになりたい場合は、<bmc>寄付をする</bmc>か<discord>Fox Den</discord>に参加してフィードバックを提供してください！",
+  "app.about.body": "<bold>Overwatch Competitive Tool (OWCT)</bold> プロジェクトは、VALORANT、CS:GO、League of Legends など他の多くのゲームがウェブ上で競技プレイヤーが優位に立つのを支援するツールを持っているのに対し、オーバーウォッチには同じことが言えないという認識から始まりました。このプロジェクトは、ストリーマーやプロプレイヤーからカジュアルプレイヤー、競技プレイヤーまで、あらゆるスタイルのプレイヤーを支援するためのさまざまなツールを提供することを目指しています。{br}{br}現在、OWCT はソフトウェアエンジニアであり、オーバーウォッチのストリーマーや USA Collegiates プレイヤー（そして悪名高いゲンジメイン）でもあるヴィクター・ホフスタッター（VicHofs）によって個人で開発されています。ただし、プロジェクトはオープンソースであり、どんな貢献でも歓迎されています。翻訳、デザイン、コードなどのリソースの提供は大歓迎です。貢献したい場合は、ヴィクター・ホフスタッター（VicHofs）に<discord>Discord</discord>、<twitch>Twitch</twitch>、または<twitter>Twitter</twitter>で連絡してください！{br}{br}このアプリはまだ初期段階にあるので、コミュニティからのサポートが特に大事です。もし今これを読んでいるのなら、それは成長に一役買っていることを意味します（ありがとうございます！）。しかし、積極的な早期サポーターになりたい場合は、<bmc>寄付してあげる</bmc>か<discord>Fox Den</discord>に参加してフィードバックを提供してください！",
 
   "app.teamSorter.or": "または",
   "app.teamSorter.readCsv": ".csv ファイルから読み込む",
@@ -37,6 +38,11 @@
   "app.teamSorter.sort": "チームをソート",
   "app.teamSorter.team": "チーム {number}",
   "app.teamSorter.bench": "控え席",
+  "app.teamSorter.playerDataLoading": "ランク読み込み中",
+  "app.teamSorter.playerDataSuccess": "ランクシンクロ完了",
+  "app.teamSorter.playerDataNotFound": "プレイヤー見つかりませんでした",
+  "app.teamSorter.playerDataPrivate": "プロフィールは非公開です。この設定への変更が更新されるまでに数時間かかる場合があります。",
+  "app.teamSorter.playerDataUnranked": "プレイヤーはこのロールとして無段です。変更は行われませんでした。",
 
   "app.overlay.title": "ストリームオーバーレイ",
   "app.overlay.guide.step1.title": "リンクの取得",
@@ -46,11 +52,15 @@
   "app.overlay.guide.step3.title": "リンクの貼り付け",
   "app.overlay.guide.step3.description": "リンクを「URL」欄に貼り付けます",
   "app.overlay.generate": "オーバーレイソースの生成",
+  "app.overlay.playerDataLoading": "プレイヤーデータ読み込み中",
+  "app.overlay.playerDataNotFound": "プレイヤー見つかりませんでした",
+  "app.overlay.playerDataPrivate": "プロフィールは非公開です。この設定への変更が更新されるまでに数時間かかる場合があります。",
 
   "app.pages.home": "ホーム",
   "app.pages.about": "OWCTについて",
   "app.pages.tools": "ツール",
 
+  "app.tools.title": "ツール",
   "app.tools.teamSorter.title": "チームソーター",
   "app.tools.teamSorter.description": "オーガナイズされたトーナメント用のチームソーター。プレイヤーを役割とランクで追加するか、ファイルから一括で読み込んで最もバランスの取れたチームに自動的にソートします。",
   "app.tools.overlay.title": "ライブオーバーレイ",

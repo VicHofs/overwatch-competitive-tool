@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Overwatch Competitive Tool (OWCT) Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![OWCT Logo](https://github.com/VicHofs/NLW-01/blob/master/.github/Banner.png)
 
-## Available Scripts
+The **Overwatch Competitive Tool (OWCT)** project is a comprehensive suite of tools designed to enhance the competitive experience, organized tournaments, and streaming in Overwatch. It aims to provide valuable resources to players of all styles, including professional players, streamers, and casual or competitive players.
 
-In the project directory, you can run:
+## Philosophy
 
-### `yarn start`
+- **Free:** OWCT is committed to providing all its features 100% free of charge, without any ads, subscriptions, or hidden fees. We rely on donations and the support of the Overwatch community to fund the project and keep it accessible to everyone.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Open:** The OWCT project is open-source, allowing the Overwatch community to contribute, provide suggestions, and make requests. We value the input and demands of the community, and new tools are developed based on these contributions.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Aimed:** OWCT is built by players, for players. We believe in mutual benefit and aim to develop tools that make sense for everyone. All developers involved in the project must be experienced Overwatch veterans, ensuring that the tools are designed with a deep understanding of the game and its player base.
 
-### `yarn test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Team Sorter:** A tool for organized tournaments that automatically sorts players into balanced teams based on their role and rank. Users can add players manually or import player information from a file for automatic sorting.
 
-### `yarn build`
+- **Stream Overlay:** An animated overlay for streamers that displays a live reading of a selected player's rank by role or all-around. The overlay updates automatically every 30 minutes, providing real-time rank information during Overwatch streams.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Involved
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contributions to the OWCT project are highly encouraged and welcomed. Whether you are interested in translations, designs, or code, your contributions can help make OWCT even better. To contribute, reach out to Victor Hofstetter (VicHofs) through Discord, Twitch, or Twitter.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Support and Feedback
 
-### `yarn eject`
+As OWCT is still in its early stages, community support and feedback are vital to its growth and improvement. If you are reading this, you are already playing a part in the project's development, and we sincerely thank you for that. If you would like to become an active early supporter, consider making a donation or joining the Fox Den community.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+We also value your feedback. Your insights and suggestions can help shape the future of OWCT. Feel free to provide feedback, report issues, or make feature requests through the appropriate channels.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+OWCT is licensed under the [MIT License](https://github.com/VicHofs/NLW-01/blob/master/LICENSE). Feel free to use, modify, and distribute the project in accordance with the terms of the license.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for supporting the Overwatch Competitive Tool (OWCT) project! We hope that this suite of tools enhances your Overwatch experience and contributes to the growth of the competitive Overwatch community.

@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.footer`
   display: flex;
+  z-index: 2;
   flex-direction: column;
   // height: 300px;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -60,6 +62,20 @@ export const LinksContainer = styled.span`
       transform: translateY(-2px);
       font-weight: 600;
     }
+  }
+`;
+
+export const FooterLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.contrastSoft};
+  font-weight: 500;
+  transform: translateY(0);
+  transition: all 100ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    font-weight: 600;
   }
 `;
 

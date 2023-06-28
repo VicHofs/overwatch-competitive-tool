@@ -20,11 +20,15 @@ import { HiUserGroup } from 'react-icons/hi2';
 import { GiEyeTarget } from 'react-icons/gi';
 import Button from 'components/Button';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { scrollToTop } from 'helpers/functions';
 
 const initialArtboard =
   getCookies()['prefers-theme'] === 'light' ? 'Light Mode' : 'Dark Mode'; // ? theme from useTheme() doesn't update fast enough, this is a workaround
 
 const Home: React.FC = () => {
+  useEffect(scrollToTop, []);
+  const navigate = useNavigate();
   const intl = useIntl();
   const theme = useTheme();
   const { rive, RiveComponent } = useRive({
@@ -101,7 +105,10 @@ const Home: React.FC = () => {
         />
       </CardContainer>
       <Divider style={{ width: '30%' }} />
-      <Button style={{ marginTop: 10, marginBottom: 20 }}>
+      <Button
+        style={{ marginTop: 10, marginBottom: 20 }}
+        onClick={() => navigate('/tools')}
+      >
         <FormattedMessage id="app.home.getStarted" />
       </Button>
     </Container>

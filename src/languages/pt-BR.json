@@ -13,6 +13,7 @@
   "app.terms.master": "mestre",
   "app.terms.grandmaster": "grao-mestre",
   "app.terms.t500": "top 500",
+  "app.terms.unranked": "rankeando",
 
   "app.home.title": "<accent>Sua</accent>{br} Ferramenta Competitiva",
   "app.home.description": "O projeto <bold>Overwatch Competitive Tool (OWCT)</bold> é um conjunto de ferramentas para todos—de jogadores profissionais e streamers a jogadores casuais e competitivos—projetado para tornar os torneios organizados, streaming e jogos competitivos de Overwatch uma experiência melhor do que nunca.",
@@ -37,6 +38,11 @@
   "app.teamSorter.sort": "Montar Times",
   "app.teamSorter.team": "Time {number}",
   "app.teamSorter.bench": "Banco",
+  "app.teamSorter.playerDataLoading": "Buscando rank",
+  "app.teamSorter.playerDataSuccess": "Rank sincronizado com sucesso",
+  "app.teamSorter.playerDataNotFound": "Jogador não encontrado",
+  "app.teamSorter.playerDataPrivate": "Perfil privado; mudanças nessa configuração podem demorar algumas horas para atualizar.",
+  "app.teamSorter.playerDataUnranked": "Jogador sem rank nessa role; nenhuma mudança feita.",
 
   "app.overlay.title": "Overlay de Stream",
   "app.overlay.guide.step1.title": "Gerar Link",
@@ -46,11 +52,15 @@
   "app.overlay.guide.step3.title": "Colar Link",
   "app.overlay.guide.step3.description": "Cole o link copiado na URL da fonte",
   "app.overlay.generate": "Gerar Link de Navegador",
+  "app.overlay.playerDataLoading": "Buscando jogador",
+  "app.overlay.playerDataNotFound": "Jogador não encontrado",
+  "app.overlay.playerDataPrivate": "Perfil privado; mudanças nessa configuração podem demorar algumas horas para atualizar.",
 
   "app.pages.home": "Início",
   "app.pages.about": "Sobre",
   "app.pages.tools": "Recursos",
 
+  "app.tools.title": "Ferramentas",
   "app.tools.teamSorter.title": "Montador de Times",
   "app.tools.teamSorter.description": "Classificador de times para torneios organizados. Jogadores são adicionados por role e rank ou lidos em massa de um arquivo e separados automaticamente nos times mais equilibrados.",
   "app.tools.overlay.title": "Overlay de Stream",

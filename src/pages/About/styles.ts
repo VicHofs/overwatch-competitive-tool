@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { TitleDivider } from 'styles';
 
 export const Container = styled.div`
+  align-self: center;
+  max-width: 1477.6px;
   flex-grow: 1;
-  padding: 0 80px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   // place-items: center;
@@ -43,7 +45,7 @@ export const Container = styled.div`
   }
 
   img {
-    position: relative;
-    margin: auto auto;
+    place-self: center;
+    margin: 30px;
   }
 `;

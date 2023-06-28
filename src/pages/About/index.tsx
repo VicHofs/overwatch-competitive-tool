@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from './styles';
 import { TitleDivider } from 'styles';
 import { FormattedMessage } from 'react-intl';
+import { scrollToTop } from 'helpers/functions';
 
 const About: React.FC = () => {
+  useEffect(scrollToTop, []);
   return (
     <Container>
       <h1>

@@ -50,7 +50,7 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
         </span>
       </Heading>
       {members.map((player) => (
-        <PlayerDisplay {...player} color={color} />
+        <PlayerDisplay {...player} color={color} key={player.id} />
       ))}
     </Container>
   );
