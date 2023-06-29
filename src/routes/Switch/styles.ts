@@ -23,6 +23,9 @@ const pageTransitionOut = keyframes`
 `;
 
 export const StyledTransitionGroup = styled(TransitionGroup)`
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
   .exit {
     width: 100%;
     position: absolute;

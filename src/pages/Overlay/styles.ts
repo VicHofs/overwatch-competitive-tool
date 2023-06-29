@@ -40,7 +40,8 @@ export const Container = styled.div`
   img {
     height: 100%;
     position: absolute;
-    top: 0;
+    bottom: 0;
+    left: 0;
 
     animation: ${fadeInLeft} 500ms cubic-bezier(0.11, 0.53, 0.27, 1);
   }

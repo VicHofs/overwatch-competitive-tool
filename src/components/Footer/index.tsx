@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
     [theme],
   );
   return (
-    <Container>
+    <Container id="footer">
       <LogoContainer>
         <h1>C</h1>
         <DynamicOWLogo

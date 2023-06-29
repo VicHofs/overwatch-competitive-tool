@@ -82,6 +82,7 @@ const TeamSorter: React.FC = () => {
   useEffect(scrollToTop, []);
   const rankInputRef = useRef<HTMLInputElement>(null);
   const [players, setPlayers] = useState<Player[]>([]);
+  const [fetchingPlayerData, setFetchingPlayerData] = useState(false);
 
   const [newPlayer, setNewPlayer] = useState<Player>({
     id: keygen(),
@@ -100,7 +101,10 @@ const TeamSorter: React.FC = () => {
     ) {
       const toastId = toast.loading('Fetching player rank...');
       const dataPromise = toast.promise(
-        getPlayerData(debouncedTag.replace('#', '-')),
+        (() => {
+          setFetchingPlayerData(true);
+          return getPlayerData(debouncedTag.replace('#', '-'));
+        })(),
         {
           loading: intl.messages['app.teamSorter.playerDataLoading'] as string,
           success: intl.messages['app.teamSorter.playerDataSuccess'] as string,
@@ -136,6 +140,9 @@ const TeamSorter: React.FC = () => {
         })
         .catch((err) => {
           /* handled by toast */
+        })
+        .finally(() => {
+          setFetchingPlayerData(false);
         });
     }
   }, [debouncedTag, debouncedRole]);
@@ -321,11 +328,12 @@ const TeamSorter: React.FC = () => {
           </span>
         </InputContainer>
         <Button
+          loading={fetchingPlayerData}
           type="secondary"
           onClick={() => {
             rankInputRef.current?.focus();
             handleAddPlayer(
-              newPlayer.rank ? newPlayer : { ...newPlayer, rank: 2785 },
+              newPlayer.rank ? newPlayer : { ...newPlayer, rank: 2785 }, // default is plat 3 to match current neutral RankPicker state
             );
           }}
           style={{ margin: '30px 0' }}

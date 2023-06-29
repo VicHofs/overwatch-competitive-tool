@@ -76,6 +76,10 @@ const Overlay: React.FC = () => {
     if (header) {
       header.style.display = 'none';
     }
+    const footer = document.getElementById('footer');
+    if (footer) {
+      footer.style.display = 'none';
+    }
     document.body.style.overflow = 'hidden';
   }, []);
   useEffect(() => {
