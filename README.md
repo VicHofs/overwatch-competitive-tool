@@ -1,6 +1,6 @@
 # Overwatch Competitive Tool (OWCT) Project
 
-![OWCT Logo](https://github.com/VicHofs/NLW-01/blob/master/.github/Banner.png)
+![OWCT Logo](https://github.com/VicHofs/overwatch-competitive-tool/blob/master/.github/Banner.png)
 
 The **Overwatch Competitive Tool (OWCT)** project is a comprehensive suite of tools designed to enhance the competitive experience, organized tournaments, and streaming in Overwatch. It aims to provide valuable resources to players of all styles, including professional players, streamers, and casual or competitive players.
 
@@ -30,7 +30,7 @@ We also value your feedback. Your insights and suggestions can help shape the fu
 
 ## License
 
-OWCT is licensed under the [MIT License](https://github.com/VicHofs/NLW-01/blob/master/LICENSE). Feel free to use, modify, and distribute the project in accordance with the terms of the license.
+OWCT is licensed under the [MIT License](https://github.com/VicHofs/overwatch-competitive-tool/blob/master/LICENSE). Feel free to use, modify, and distribute the project in accordance with the terms of the license.
 
 ---
 
