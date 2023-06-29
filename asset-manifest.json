@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/overwatch-competitive-tool/static/js/main.d1bc62ac.chunk.js",
-    "main.js.map": "/overwatch-competitive-tool/static/js/main.d1bc62ac.chunk.js.map",
+    "main.js": "/overwatch-competitive-tool/static/js/main.1ab8df52.chunk.js",
+    "main.js.map": "/overwatch-competitive-tool/static/js/main.1ab8df52.chunk.js.map",
     "runtime-main.js": "/overwatch-competitive-tool/static/js/runtime-main.4e2da1ce.js",
     "runtime-main.js.map": "/overwatch-competitive-tool/static/js/runtime-main.4e2da1ce.js.map",
     "static/css/2.a1596f27.chunk.css": "/overwatch-competitive-tool/static/css/2.a1596f27.chunk.css",
-    "static/js/2.3fd725db.chunk.js": "/overwatch-competitive-tool/static/js/2.3fd725db.chunk.js",
-    "static/js/2.3fd725db.chunk.js.map": "/overwatch-competitive-tool/static/js/2.3fd725db.chunk.js.map",
+    "static/js/2.d147c4f1.chunk.js": "/overwatch-competitive-tool/static/js/2.d147c4f1.chunk.js",
+    "static/js/2.d147c4f1.chunk.js.map": "/overwatch-competitive-tool/static/js/2.d147c4f1.chunk.js.map",
     "index.html": "/overwatch-competitive-tool/index.html",
     "static/css/2.a1596f27.chunk.css.map": "/overwatch-competitive-tool/static/css/2.a1596f27.chunk.css.map",
-    "static/js/2.3fd725db.chunk.js.LICENSE.txt": "/overwatch-competitive-tool/static/js/2.3fd725db.chunk.js.LICENSE.txt",
+    "static/js/2.d147c4f1.chunk.js.LICENSE.txt": "/overwatch-competitive-tool/static/js/2.d147c4f1.chunk.js.LICENSE.txt",
     "static/media/BigNoodle.e2ebffa4.ttf": "/overwatch-competitive-tool/static/media/BigNoodle.e2ebffa4.ttf",
     "static/media/BigNoodleItalic.a54ee5b6.ttf": "/overwatch-competitive-tool/static/media/BigNoodleItalic.a54ee5b6.ttf",
     "static/media/Futura.fa15297b.ttf": "/overwatch-competitive-tool/static/media/Futura.fa15297b.ttf",
@@ -94,7 +94,7 @@
   "entrypoints": [
     "static/js/runtime-main.4e2da1ce.js",
     "static/css/2.a1596f27.chunk.css",
-    "static/js/2.3fd725db.chunk.js",
-    "static/js/main.d1bc62ac.chunk.js"
+    "static/js/2.d147c4f1.chunk.js",
+    "static/js/main.1ab8df52.chunk.js"
   ]
 }
